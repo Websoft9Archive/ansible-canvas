@@ -15,5 +15,5 @@
     - {role: role_ruby, tags: "role_ruby"}  
     - {role: role_nodejs, tags: "role_nodejs"}
     - {role: role_postgresql, tags: "role_postgresql"}
-    - {role: role_canvas, tags: "role_canvas"}
+    - {role: canvas, tags: "canvas"}
     - {role: role_preend, tags: "role_preend"}

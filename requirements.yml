@@ -12,9 +12,6 @@
 
 - src: http://github.com/websoft9dev/role_postgresql
   version: master
-
-- src: http://github.com/websoft9test/role_canvas
-  version: master
   
 - src: http://github.com/websoft9dev/role_preend
   version: master
