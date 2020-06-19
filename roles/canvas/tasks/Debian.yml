@@ -10,9 +10,14 @@
     chdir: canvas/
 
 # external Dependencies Installation
+- name: Install 
+  shell: |
+    apt install software-properties-common
+    add-apt-repository ppa:brightbox/ruby-ng
+
 - name: Install dependency
   apt: 
-    name: software-properties-common , repository , ppa:brightbox/ruby-ng , zlib1g-dev , libxml2-dev ,  libsqlite3-dev , libpq-dev , libxmlsec1-dev , curl , make , g++
+    name: zlib1g-dev , libxml2-dev ,  libsqlite3-dev , libpq-dev , libxmlsec1-dev , curl , make , g++
     update_cache: yes
 
 - name: Install Canvas dependencies1
