@@ -1,34 +1,7 @@
-# using git clone canvas
-- name: Install git & Clone canvas
-  shell: |
-    apt install git -y
-    git clone https://github.com/instructure/canvas-lms.git canvas     
-
-- name: Clone Canvas
-  shell: git checkout stable
-  args:
-    chdir: canvas/
-
 # external Dependencies Installation
-- name: Install external dependency1
-  shell: |
-    apt install software-properties-common -y
-    add-apt-repository ppa:brightbox/ruby-ng
-
-- name: Install external dependency2
+- name: Install external dependency
   apt: 
-    name: zlib1g-dev , libxml2-dev ,  libsqlite3-dev , libpq-dev , libxmlsec1-dev , curl , make , g++
+    name: [zlib1g-dev,libxml2-dev,libsqlite3-dev,libpq-dev,libxmlsec1-dev]
     update_cache: yes
-
-- name: Install Canvas dependencies1
-  shell: 
-  args:
-    cmd: bundle install
-    chdir: canvas/
-
-# Sometimes you have to run this command twice if there is an error
-- name: Install Canvas dependencies2
-  shell: 
-    yarn install --pure-lockfile
    
 
