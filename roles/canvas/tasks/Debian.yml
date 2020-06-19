@@ -1,7 +1,7 @@
 # using git clone canvas
-- name: Install git
+- name: Install git & Clone canvas
   shell: |
-    apt install git
+    apt install git -y
     git clone https://github.com/instructure/canvas-lms.git canvas     
 
 - name: Clone Canvas
@@ -12,7 +12,7 @@
 # external Dependencies Installation
 - name: Install 
   shell: |
-    apt install software-properties-common
+    apt install software-properties-common -y
     add-apt-repository ppa:brightbox/ruby-ng
 
 - name: Install dependency
