@@ -3,14 +3,34 @@
   include: "{{ansible_os_family}}.yml"
 
 # configure Canvas
-## set environment variable
+- block:
+  - name: Configure Canvas
+    shell: |
+      cd canvas
+      for config in amazon_s3 delayed_jobs domain file_store outgoing_mail security external_migration; \
+          do cp -v config/$config.yml.example config/$config.yml; done 
+      cp config/dynamic_settings.yml.example config/dynamic_settings.yml
+      bundle exec rails canvas:compile_assets
+
+- block: 
+  - name: SQL configure
+    shell: | 
+      cp config/database.yml.example config/database.yml
+      createdb canvas_development
+
+
+
+
+
+
+
 - block:
   - name: Copy jdk_env to /etc/profile.d
     template:
       src: canvas_env.sh
       dest: '/etc/profile.d'
-      mode: 0640
-      
+      mode: 064
+
 - block:     
   - name: Export ORACLE_HOME environment variable for this shell
     shell: |

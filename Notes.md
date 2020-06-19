@@ -1,52 +1,79 @@
 # Canvas Notes
 
 组件名称：Canvas-Server  
-安装文档：https://www.canvas.com/download.html  
-配置文档：https://www.canvas.com/admin-guide.html  
+安装文档：https://github.com/instructure/canvas-lms/wiki/Quick-Start
+配置文档：  
 支持平台： Debian家族 | RHEL家族 | Windows | Kubernetes |Docker  
 
-责任人：helin
+责任人：zengxc
 
 ## 概要
 
-Canvas是一款开源的MQ系统，它包含Canvas-Server和Canvas-Client，服务器上运行的是Canvas-Server
+
 
 ## 环境要求
 
-* 程序语言：Java 
-* 应用服务器：自带
-* 数据库：无
-* 依赖组件：Erlang
-* 服务器配置：最低1核2G
+* 程序语言：
+* 应用服务器：
+* 数据库：postgresql
+* 依赖组件：Ruby  nodejs
+* 服务器配置：
 * 其他：
 
 ## 安装说明
 
-官方建议使用其自身提供的erlang和canvas-server的仓库，不建议使用操作系统自带的仓库或其他第三方仓库。同时，官方提供了自动安装仓库的自动化脚本。
 
 下面基于不同的安装平台，分别进行安装说明。
 
 ### CentOS
 
 ```shell
-# 分别安装erlang源和canvas-server源
-curl -s https://packagecloud.io/install/repositories/canvas/erlang/script.rpm.sh | sudo bash
-curl -s https://packagecloud.io/install/repositories/canvas/canvas-server/script.rpm.sh | sudo bash
 
-# 安装
-yum install erlang canvas-server -y
+
 ```
 
 ### Ubuntu
 
 ```shell
-# 分别安装erlang源和canvas-server源
-curl -s https://packagecloud.io/install/repositories/canvas/erlang/script.deb.sh | sudo bash
-curl -s https://packagecloud.io/install/repositories/canvas/canvas-server/script.deb.sh | sudo bash
+# using git clone canvas
+  sudo apt-get install git
+  git clone https://github.com/instructure/canvas-lms.git canvas
+  cd canvas
+  git checkout stable
 
-# 安装
-sudo apt-get update -y
-apt install erlang canvas-server -y
+#  external Dependencies Installation 
+  sudo apt-get install software-properties-common
+  sudo add-apt-repository ppa:brightbox/ruby-ng
+  sudo apt-get update
+# using common roles install ruby, postgresql, nodejs  
+  sudo apt-get install ruby2.4 ruby2.4-dev zlib1g-dev libxml2-dev \
+                       libsqlite3-dev postgresql-9.5 libpq-dev \
+                       libxmlsec1-dev curl make g++
+
+# install yarn: nodejs_roles
+ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+ sudo apt-get update && sudo apt-get install yarn=1.10.1-1
+
+# set postgresql superuser : postgresql_roles
+  sudo -u postgres createuser $USER
+  sudo -u postgres psql -c "alter user $USER with superuser" postgres
+
+# install bundler
+  sudo gem install bundler -v 1.13.6
+
+# using bundler install canvas dependencies
+  cd canvas
+  bundle install
+  yarn install --pure-lockfile
+# Sometimes you have to run this command twice if there is an error
+  yarn install --pure-lockfile
+
+ 
+
+
+
+
 ```
 
 ## 配置
@@ -54,17 +81,42 @@ apt install erlang canvas-server -y
 安装完成后，需要依次完成如下配置
 
 ```shell
-# Set Canvas
-- name: Restart Canvas
-  shell: systemctl start canvas-server
+# default configuration
+  ~/canvas$ for config in amazon_s3 delayed_jobs domain file_store outgoing_mail security external_migration; \
+          do cp -v config/$config.yml.example config/$config.yml; done
+# Dynamic configuration
+  ~/canvas$ cp config/dynamic_settings.yml.example config/dynamic_settings.yml
 
-- name: Enable the management console of Canvas
-  shell: canvas-plugins enable canvas_management
+#  
+  ~/canvas$ bundle exec rails canvas:compile_assets
 
-- name: Create administrator for Canvas console
-  shell: |
-    canvasctl add_user admin admin
-    canvasctl set_user_tags admin administrator
+# sql configuration
+  ~/canvas$ cp config/database.yml.example config/database.yml
+  ~/canvas$ createdb canvas_development
+
+# initial sql  交互式操作: 设置user pwd email
+  ~/canvas$ bundle exec rails db:initial_setup
+
+# test sql configuration
+  psql -c 'CREATE USER canvas' -d postgres
+  psql -c 'ALTER USER canvas CREATEDB' -d postgres
+  createdb -U canvas canvas_test
+  psql -c 'GRANT ALL PRIVILEGES ON DATABASE canvas_test TO canvas' -d canvas_test
+  psql -c 'GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO canvas' -d canvas_test
+  psql -c 'GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO canvas' -d canvas_test
+  RAILS_ENV=test bundle exec rails db:test:reset
+
+  bundle exec rspec spec/models/assignment_spec.rb
+
+# install redis improve canvas
+  sudo apt-get update
+  sudo apt-get install redis-server
+  redis-server
+  echo -e "development:\n  cache_store: redis_store" > config/cache_store.yml
+  echo -e "development:\n  servers:\n  - redis://localhost" > config/redis.yml
+
+
+
 ```
 
 ## 路径
