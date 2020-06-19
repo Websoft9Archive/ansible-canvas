@@ -10,12 +10,12 @@
     chdir: canvas/
 
 # external Dependencies Installation
-- name: Install 
+- name: Install external dependency1
   shell: |
     apt install software-properties-common -y
     add-apt-repository ppa:brightbox/ruby-ng
 
-- name: Install dependency
+- name: Install external dependency2
   apt: 
     name: zlib1g-dev , libxml2-dev ,  libsqlite3-dev , libpq-dev , libxmlsec1-dev , curl , make , g++
     update_cache: yes
@@ -28,8 +28,7 @@
 
 # Sometimes you have to run this command twice if there is an error
 - name: Install Canvas dependencies2
-  shell: |
+  shell: 
     yarn install --pure-lockfile
-    yarn install --pure-lockfile
-
+   
 

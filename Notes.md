@@ -59,7 +59,7 @@
   sudo -u postgres createuser $USER
   sudo -u postgres psql -c "alter user $USER with superuser" postgres
 
-# install bundler
+# install bundler: ruby_roles
   sudo gem install bundler -v 1.13.6
 
 # using bundler install canvas dependencies
@@ -68,11 +68,6 @@
   yarn install --pure-lockfile
 # Sometimes you have to run this command twice if there is an error
   yarn install --pure-lockfile
-
- 
-
-
-
 
 ```
 
@@ -115,8 +110,6 @@
   echo -e "development:\n  cache_store: redis_store" > config/cache_store.yml
   echo -e "development:\n  servers:\n  - redis://localhost" > config/redis.yml
 
-
-
 ```
 
 ## 路径
@@ -153,17 +146,7 @@
 服务的模板如下：
 
 ```
-[Unit]
-Description=Redmine
-After=nginx.service
-[Service]
-Environment=RAILS_ENV=production
-Type=simple
-WorkingDirectory=/data/wwwroot/redmine
-ExecStart=/usr/local/bin/puma -b tcp://127.0.0.1:9292 -e production 
-User=redmine
-[Install]
-WantedBy=multi-user.target
+
 ```
 
 ## 环境变量
@@ -178,30 +161,28 @@ WantedBy=multi-user.target
 
 ```
 # Check Canvas version
-sudo canvasctl status | grep Canvas*
 
-# Check Erlang version
-ls /usr/lib64/erlang
 ```
 
 ## 常见问题
 
 #### 有没有管理控制台？
 
-*http:// 公网 IP:15672* 即可访问控制台，系统默认存在一个无法通过外网访问的guest/guest账号
+通过*http:// 公网 IP:3000*访问管理控制台 
 
 #### 本项目需要开启哪些端口？
 
 | item      | port  |
 | --------- | ----- |
-| lustering | 25672 |
-| AMQP      | 5672  |
-| http      | 15672 |
+|  | |
+
 
 #### 有没有CLI工具？
 
-有，通过 `canvasctl` 查看工具的说明
+
 
 #### 安装后是否需要创建普通用户？
 
-有，canvas
+
+### 日志
+
