@@ -25,8 +25,7 @@
 - name: Install Canvas dependencies and rename configuration file
   shell: |
     bundle install
-    yarn install --pure-lockfile
-    yarn install --pure-lockfile
+    yarn install --pure-lockfile 
     for config in amazon_s3 delayed_jobs domain cache_store redis file_store outgoing_mail security external_migration; \
           do cp -v config/$config.yml.example config/$config.yml; done
     cp config/dynamic_settings.yml.example config/dynamic_settings.yml
@@ -49,7 +48,7 @@
     chdir: /data/wwwroot/canvas
 
 
-    
+
 
 # set soft link, -f enforce the exist links
 # ln -sf src des
