@@ -1,0 +1,37 @@
+  
+# 核心任务
+
+- name: Canvas
+  hosts: all
+  become: yes
+  become_method: sudo
+
+  vars_files:
+    - vars/main.yml
+  
+  vars_prompt:
+    - name: 'canvas_selection'
+      prompt: "Choose the Canvas distribution \n
+      1: Canvas 5 Classic\n
+      2: Canvas Artemis\n"
+      private: no
+      default: 1
+
+  vars:
+    canvas_select:
+      '1': "classic"
+      '2': "artemis"
+
+    canvas_distribution: "{{canvas_select[canvas_selection]}}"
+  
+  pre_tasks:
+    - debug:
+        msg: Will install {{canvas_distribution}}
+
+  roles:
+    - {role: role_common, tags: "role_common"}  
+    - {role: role_cloud, tags: "role_cloud"}  
+    - {role: role_jdk, tags: "role_jdk"}  
+    - {role: canvas, tags: "canvas"}
+    - {role: role_preend, tags: "preend"}
+    - {role: role_end, tags: "role_end"}

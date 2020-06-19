@@ -1,0 +1,3 @@
+- name: check_canvas_service
+  debug:
+    var: check_canvas_service.stdout

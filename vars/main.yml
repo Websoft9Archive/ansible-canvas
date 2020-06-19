@@ -1,11 +1,11 @@
 #全局
 region: "0"
 
-# rabbitmq variable
+# canvas variable
 
-rabbitmq_db_name: rabbitmq
-rabbitmq_db_user: rabbitmq
-rabbitmq_db_password: "123456"
+canvas_db_name: canvas
+canvas_db_user: canvas
+canvas_db_password: "123456"
 
 preend_certbot: True
 nginx_reverse_proxy_port: "8065"
@@ -20,13 +20,13 @@ docker_applications: 'phpmyadmin'
 
 # 生成应用数据库和用户
 mysql_databases:
- - name: rabbitmq
+ - name: canvas
    encoding: utf8
  
 mysql_users:
- - name: rabbitmq
+ - name: canvas
    host: localhost
-   priv: 'rabbitmq.*:ALL'
+   priv: 'canvas.*:ALL'
 
 # 初始化MySQL root密码
 init_db: 
@@ -36,11 +36,11 @@ init_db:
   
 # 应用数据库信息
 init_application:
-  rabbitmq:
-    service: rabbitmq
-    database: rabbitmq 
-    database_user: rabbitmq
+  canvas:
+    service: canvas
+    database: canvas 
+    database_user: canvas
     database_host: localhost
     database_password: "123456"
     config_path:
-      - /opt/rabbitmq/config/config.json
+      - /opt/canvas/config/config.json

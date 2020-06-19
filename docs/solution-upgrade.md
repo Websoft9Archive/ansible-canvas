@@ -6,10 +6,10 @@ You should know the differences between the terms **Update** and **Upgrade**([Ex
 - Operating system patching is **Update**, Ubuntu16.04 to Ubuntu18.04 is **Upgrade**
 - MySQL5.6.25 to MySQL5.6.30 is **Update**, MySQL5.6 to MySQL5.7 is **Upgrade**
 
-For RabbitMQ maintenance, focus on the following two Update & Upgrade jobs
+For Canvas maintenance, focus on the following two Update & Upgrade jobs
 
 - Sytem update(Operating System and Running Environment) 
-- RabbitMQ upgrade 
+- Canvas upgrade 
 
 ## System Update
 
@@ -24,6 +24,6 @@ yum update -y --skip-broken
 ```
 > This deployment package is preconfigured with a scheduled task for automatic updates. If you want to remove the automatic update, please delete the corresponding Cron
 
-## RabbitMQ Upgrade
+## Canvas Upgrade
 
-Refer to the official docs: [Upgrading RabbitMQ](https://www.rabbitmq.com/upgrade.html)
+Refer to the official docs: [Upgrading Canvas](https://www.canvas.com/upgrade.html)

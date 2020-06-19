@@ -4,14 +4,14 @@ sidebarDepth: 3
 
 # 参数
 
-RabbitMQ 预装包包含 RabbitMQ 运行所需一序列支撑软件（简称为“组件”），下面列出主要组件名称、安装路径、配置文件地址、端口、版本等重要的信息。
+Canvas 预装包包含 Canvas 运行所需一序列支撑软件（简称为“组件”），下面列出主要组件名称、安装路径、配置文件地址、端口、版本等重要的信息。
 
 ## 路径
 
-### RabbitMQ
+### Canvas
 
-RabbitMQ 安装目录： */data/rabbitmq*  
-RabbitMQ 日志目录： */data/logs/rabbitmq*  
+Canvas 安装目录： */data/canvas*  
+Canvas 日志目录： */data/logs/canvas*  
 
 ### Nginx
 
@@ -35,7 +35,7 @@ MySQL 可视化管理地址: *http://服务器公网IP/phpmyadmin*，用户名�
 
 | 名称 | 端口号 | 用途 |  必要性 |
 | --- | --- | --- | --- |
-| HTTP | 15672 | 通过 HTTP 访问 RabbitMQ 控制台 | 可选 |
+| HTTP | 15672 | 通过 HTTP 访问 Canvas 控制台 | 可选 |
 | TCP | 5672 | epmd | 可选 |
 | TCP | 55672 | Erlang distribution | 可选 |
 
@@ -63,6 +63,6 @@ docker -v
 yum info erlang
 apt show erlang
 
-# RabbitMQ version
-rabbitmqctl status | grep RabbitMQ*
+# Canvas version
+canvasctl status | grep Canvas*
 ```

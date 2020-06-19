@@ -1,17 +1,17 @@
 # Start or Stop the Services
 
-These commands you must know when you using the RabbitMQ of Websoft9
+These commands you must know when you using the Canvas of Websoft9
 
-### RabbitMQ
+### Canvas
 
 ```shell
-sudo systemctl start rabbitmq-server
-sudo systemctl stop rabbitmq-server
-sudo systemctl restart rabbitmq-server
-sudo systemctl status rabbitmq-server
+sudo systemctl start canvas-server
+sudo systemctl stop canvas-server
+sudo systemctl restart canvas-server
+sudo systemctl status canvas-server
 
-# you can use this debug mode if RabbitMQ service can't run
-rabbitmq-server console
+# you can use this debug mode if Canvas service can't run
+canvas-server console
 ```
 
 ### MySQL

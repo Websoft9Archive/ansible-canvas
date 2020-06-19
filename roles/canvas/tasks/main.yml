@@ -1,0 +1,113 @@
+# install Canvas by OS_family
+- name: Install this role on {{ansible_os_family}}
+  include: "{{ansible_os_family}}.yml"
+
+# configure Canvas
+## set environment variable
+- block:
+  - name: Copy jdk_env to /etc/profile.d
+    template:
+      src: canvas_env.sh
+      dest: '/etc/profile.d'
+      mode: 0640
+      
+- block:     
+  - name: Export ORACLE_HOME environment variable for this shell
+    shell: |
+      export ORACLE_BASE=/opt/oracle 
+      export ORACLE_HOME=/opt/oracle/product/18c/dbhomeXE
+      export ORACLE_SID=XE
+      export PATH=$PATH:$ORACLE_HOME/bin
+
+- name: Create canvas User
+  user:
+    name: canvas
+    shell: /usr/sbin/nologin
+    home: /data/wwwroot/canvas
+    create_home: no
+
+- name: Create canvas directory
+  file:
+    path: /data/wwwroot/canvas
+    state: directory
+    owner: canvas
+    group: canvas
+    
+- name: Download canvas
+  get_url:
+    dest: /data/wwwroot/canvas
+    url: "{{canvas_download_url}}"
+    owner: canvas
+    group: canvas
+
+- name: Set canvas config
+  template:
+    src: canvas.conf.jinja2
+    dest: /data/wwwroot/canvas/canvas.conf
+    owner: canvas
+    group: canvas
+
+- name: Setting canvas service
+  copy:
+    src: canvas.service
+    dest: /lib/systemd/system/canvas.service
+
+- name: Restart canvas
+  service:
+    name: canvas.service
+    state: restarted
+    enabled: yes
+
+- name: Create canvas System User
+  user:
+      name: canvas 
+      create_home: no 
+      home: /opt/canvas
+      shell: /usr/sbin/nologin
+
+- name: Download canvas
+  unarchive:
+      src: "{{canvas_download_url}}"
+      dest: /opt/ 
+      group: canvas 
+      remote_src: yes
+      owner: canvas
+      mode: g+w
+
+- name: Create the storage directory for files.
+  file:
+      path: /opt/canvas/data
+      state: directory 
+      owner: canvas 
+      group: canvas
+      mode: g+w
+      
+- name: Set database connection /opt/canvas/config/config.json
+  lineinfile:
+    dest: /opt/canvas/config/config.json
+    regexp: '"DataSource":'
+    line: '    "DataSource": "{{canvas_db_user}}:{{canvas_db_password}}@tcp(localhost:3306)/{{canvas_db_name}}?charset=utf8mb4,utf8&readTimeout=30s&writeTimeout=30s",'
+    backrefs: yes 
+
+# set soft link, -f enforce the exist links
+# ln -sf src des
+- name: set soft link
+  shell: |
+    ln -sf /opt/canvas  /data/wwwroot
+    ln -sf /opt/canvas/config /data/config
+
+# Check version,
+# must use sudo sh -c to solve the no-root permission
+- block:
+  - name: Check Canvas Version
+    shell: sudo sh -c "canvasctl status | grep 'Canvas version' 1>> /data/logs/install_version.txt"
+
+  - name: Check Erlang Version
+    shell: sudo sh -c 'echo "Erlang $(yum info erlang | grep Version | sed -n 1p)" 1>> /data/logs/install_version.txt'
+    when: ansible_os_family=="RedHat"
+
+# check service state
+- name: Check Canvas Service
+  shell: systemctl status canvas | grep Active*
+  register: check_canvas_service
+  notify: check_canvas_service

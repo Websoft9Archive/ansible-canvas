@@ -1,5 +1,5 @@
 # CLI
 
-Use `rabbitmqctl` to manage RabbitMQ  
+Use `canvasctl` to manage Canvas  
 
 Use `erl` which is a Shell for develop and testing Erlang  

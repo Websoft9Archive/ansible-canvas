@@ -4,10 +4,10 @@
 
 以此模板创建项目之后，依次参考如下步骤完成后续设置
 
-1. 依次替换文件（夹）和关键词 **RabbitMQ** 和 **rabbitmq**
+1. 依次替换文件（夹）和关键词 **Canvas** 和 **canvas**
 2. 依次完成如下文件的改写
    ```
-   /rabbitmq.yml
+   /canvas.yml
    /requirements.yml
    /vars/main.yml
    ```
@@ -22,7 +22,7 @@
 Playbook 主体结构
   - vars：主变量
   - roles：用于存放role目录
-  - rabbitmq.yml : 项目主入口文件
+  - canvas.yml : 项目主入口文件
   - docs：用于存放文档
   - .github：用于存放 GitHub Actions 配置
   - ansible.cfg 
