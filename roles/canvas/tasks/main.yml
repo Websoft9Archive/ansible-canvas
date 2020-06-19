@@ -4,17 +4,18 @@
     name: canvas
     shell: /usr/sbin/nologin
 
-- name: Ansible check file exists
-  shell: if [ ! $(ls /data/wwwroot/knowage | grep Knowage.*.sh) ]; then echo "need_download";else echo "downloaded";fi
-  register: result
-
+- name: rm -rf /data/wwwroot/canvas for second installation
+  shell: rm -rf /data/wwwroot/canvas
+  
 - name: Download Knowage, it have 2G, need 10 minutes
   unarchive:
-    src: "{{knowage_download_url}}"
-    dest: "/data/wwwroot/knowage"
+    src: "{{canvas_download_url}}"
+    dest: "/data/wwwroot"
     remote_src: yes
     mode: 0750
-  when: result.stdout == "need_download"
+    
+- name: Rename dir name
+  shell: cd /data/wwwroot; if [ ! -d "canvas" ]; then mv *instructure-canvas-lms* canvas; fi
 
 # install Canvas by OS_family
 - name: Install this role on {{ansible_os_family}}
