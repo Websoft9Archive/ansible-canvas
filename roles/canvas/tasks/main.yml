@@ -27,7 +27,7 @@
     bundle install
     yarn install --pure-lockfile
     yarn install --pure-lockfile
-    for config in amazon_s3 delayed_jobs domain file_store outgoing_mail security external_migration; \
+    for config in amazon_s3 delayed_jobs domain cache_store redis file_store outgoing_mail security external_migration; \
           do cp -v config/$config.yml.example config/$config.yml; done
     cp config/dynamic_settings.yml.example config/dynamic_settings.yml
     cp config/database.yml.example config/database.yml
@@ -37,10 +37,12 @@
 - name: Set database connection
   shell: |
   
-- name: Createdb for canvas when connection successful
+- name: Createdb and connect Redis for canvas when connection successful
   shell: |
     createdb canvas_development
     bundle exec rails db:initial_setup
+    echo -e "development:\n  cache_store: redis_store" > config/cache_store.yml
+    echo -e "development:\n  servers:\n  - redis://localhost" > config/redis.yml
   args:
     chdir: /data/wwwroot/canvas
 
