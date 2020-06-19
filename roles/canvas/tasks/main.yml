@@ -21,16 +21,15 @@
 
 # set soft link, -f enforce the exist links
 # ln -sf src des
-- name: set soft link
-  shell: |
-    ln -sf ~/canvas  /data/wwwroot
-    ln -sf ~/canvas/config /data/config
+#- name: set soft link
+#  shell: |
+    
 
 # Check version,
 # must use sudo sh -c to solve the no-root permission
-- block:
-  - name: Check Canvas Version
-    shell: sudo sh -c " 1>> /data/logs/install_version.txt"
+#- block:
+#  - name: Check Canvas Version
+#    shell: sudo sh -c " 1>> /data/logs/install_version.txt"
 
 
 # check service state
