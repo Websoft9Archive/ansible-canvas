@@ -1,3 +1,17 @@
+#1 pre-installation
+- name: Create User for Canvas
+  user:
+    name: canvas
+    home: /data/wwwroot/canvas
+    shell: /usr/sbin/nologin
+
+- name: Create /data/wwwroot/canvas
+  file:
+    path: /data/wwwroot/canvas
+    state: directory
+    owner: canvas
+    group: canvas
+
 # install Canvas by OS_family
 - name: Install this role on {{ansible_os_family}}
   include: "{{ansible_os_family}}.yml"
