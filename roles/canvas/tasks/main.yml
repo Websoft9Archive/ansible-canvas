@@ -36,8 +36,8 @@
     
 - name: Set database connection
   shell: |
-    sed -i 's/username: canvas/username: postgres/g' /data/wwwroot/canvas/config/database.yml
-    sed -i 's/password: your_password/password: {{postgresql_password}}/g'  /data/wwwroot/canvas/config/database.yml
+    sed -i '18,25s/username: canvas/username: postgres/g' /data/wwwroot/canvas/config/database.yml
+    sed -i '18,25s/password: your_password/password: {{postgresql_password}}/g'  /data/wwwroot/canvas/config/database.yml
 
 - name: Createdb and connect Redis for canvas when connection successful
   shell: |
@@ -47,6 +47,9 @@
     echo -e "development:\n  servers:\n  - redis://localhost" > config/redis.yml
   args:
     chdir: /data/wwwroot/canvas
+
+
+    
 
 # set soft link, -f enforce the exist links
 # ln -sf src des
