@@ -7,7 +7,7 @@
 - name: rm -rf /data/wwwroot/canvas for second installation
   shell: rm -rf /data/wwwroot/canvas
   
-- name: Download Knowage, it have 2G, need 10 minutes
+- name: Download canvas
   unarchive:
     src: "{{canvas_download_url}}"
     dest: "/data/wwwroot"
@@ -36,7 +36,9 @@
     
 - name: Set database connection
   shell: |
-  
+    sed -i 's/username: canvas/username: postgres/g' /data/wwwroot/canvas/config/database.yml
+    sed -i 's/password: your_password/password: 123456/g' canvas/username: postgres/g' /data/wwwroot/canvas/config/database.yml
+
 - name: Createdb and connect Redis for canvas when connection successful
   shell: |
     createdb canvas_production
