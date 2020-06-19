@@ -7,8 +7,9 @@ preend_certbot: True
 nginx_reverse_proxy_port: "3000"
 
 nodejs_version: "10"
-ruby_version: 2.4
+ruby_version: "2.4"
+
+redis_version: "5.0"
+
 postgresql_version: "9.5"
-
-
-
+postgresql_password: "123456"
