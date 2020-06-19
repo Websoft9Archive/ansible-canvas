@@ -1,0 +1,5 @@
+# 正则表达式
+
+# e.g change string "x.y" to "xy"
+- set_fact:
+    postgresql_version_regex: "{{ postgresql_version | regex_replace('^(?P<before>.+).(?P<after>\\d+)$', '\\g<before>\\g<after>')}}"
