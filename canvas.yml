@@ -16,5 +16,4 @@
     - {role: role_nodejs, tags: "role_nodejs"}
     - {role: role_postgresql, tags: "role_postgresql"}
     - {role: canvas, tags: "canvas"}
-    - {role: role_preend, tags: "preend"}
-    
+    - {role: role_preend, tags: "role_preend"}

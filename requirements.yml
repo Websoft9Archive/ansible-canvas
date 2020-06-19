@@ -10,11 +10,11 @@
 - src: http://github.com/websoft9dev/role_nodejs
   version: master
 
-- src: http://github.com/websoft9dev/role_preend
+- src: http://github.com/websoft9dev/role_postgresql
   version: master
-
+  
 - src: http://github.com/websoft9dev/role_canvas
   version: master
   
-- src: http://github.com/websoft9dev/role_postgresql
+- src: http://github.com/websoft9dev/role_preend
   version: master
