@@ -15,9 +15,6 @@
     name: software-properties-common , repository , ppa:brightbox/ruby-ng , zlib1g-dev , libxml2-dev ,  libsqlite3-dev , libpq-dev , libxmlsec1-dev , curl , make , g++
     update_cache: yes
 
-- name: Install bundler
-  shell: gem install bundler -v 1.13.6
-
 - name: Install Canvas dependencies1
   shell: |
   args:
