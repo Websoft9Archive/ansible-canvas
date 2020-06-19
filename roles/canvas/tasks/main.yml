@@ -39,7 +39,7 @@
   
 - name: Createdb and connect Redis for canvas when connection successful
   shell: |
-    createdb canvas_development
+    createdb canvas_production
     bundle exec rails db:initial_setup
     echo -e "development:\n  cache_store: redis_store" > config/cache_store.yml
     echo -e "development:\n  servers:\n  - redis://localhost" > config/redis.yml
