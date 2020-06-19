@@ -2,15 +2,19 @@
 - name: Create User for Canvas
   user:
     name: canvas
-    home: /data/wwwroot/canvas
     shell: /usr/sbin/nologin
 
-- name: Create /data/wwwroot/canvas
-  file:
-    path: /data/wwwroot/canvas
-    state: directory
-    owner: canvas
-    group: canvas
+- name: Ansible check file exists
+  shell: if [ ! $(ls /data/wwwroot/knowage | grep Knowage.*.sh) ]; then echo "need_download";else echo "downloaded";fi
+  register: result
+
+- name: Download Knowage, it have 2G, need 10 minutes
+  unarchive:
+    src: "{{knowage_download_url}}"
+    dest: "/data/wwwroot/knowage"
+    remote_src: yes
+    mode: 0750
+  when: result.stdout == "need_download"
 
 # install Canvas by OS_family
 - name: Install this role on {{ansible_os_family}}
