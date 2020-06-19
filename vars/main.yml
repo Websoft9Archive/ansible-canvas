@@ -13,3 +13,11 @@ redis_version: "5.0"
 
 postgresql_version: "9.5"
 postgresql_password: "123456"
+
+docker_applications: 
+  - phppgadmin
+
+postgresql_remote: True
+postgresql_databases:
+- name: canvas_production
+   encoding: utf8

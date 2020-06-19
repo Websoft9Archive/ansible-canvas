@@ -38,10 +38,11 @@
     sed -i '18,25s/username: canvas/username: postgres/g' /data/wwwroot/canvas/config/database.yml
     sed -i '18,25s/password: your_password/password: {{postgresql_password}}/g'  /data/wwwroot/canvas/config/database.yml
 
+#  postgresql creatdb command need su to postgres
 - name: Createdb and connect Redis for canvas when connection successful
   shell: |
-    createdb canvas_production
-    bundle exec rails db:initial_setup
+    export RAILS_ENV=production
+    RAILS_ENV=production bundle exec rake db:initial_setup
     echo -e "development:\n  cache_store: redis_store" > config/cache_store.yml
     echo -e "development:\n  servers:\n  - redis://localhost" > config/redis.yml
   args:

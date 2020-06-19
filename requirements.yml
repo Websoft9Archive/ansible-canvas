@@ -13,6 +13,9 @@
 - src: http://github.com/websoft9dev/role_nodejs
   version: master
 
+- src: http://github.com/websoft9dev/role_docker
+  version: master
+  
 - src: http://github.com/websoft9dev/role_postgresql
   version: master
   
