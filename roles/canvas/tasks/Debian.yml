@@ -1,13 +1,13 @@
 # using git clone canvas
 - name: Install git
-  shell:  apt install git
+  shell: |
+    apt install git
+    git clone https://github.com/instructure/canvas-lms.git canvas     
 
 - name: Clone Canvas
-  shell: |
-    git clone https://github.com/instructure/canvas-lms.git canvas
+  shell: git checkout stable
   args:
-    cmd:  git checkout stable
-    chdir: canvas
+    chdir: canvas/
 
 # external Dependencies Installation
 - name: Install dependency
@@ -16,10 +16,10 @@
     update_cache: yes
 
 - name: Install Canvas dependencies1
-  shell: |
+  shell: 
   args:
     cmd: bundle install
-    chdir: canvas
+    chdir: canvas/
 
 # Sometimes you have to run this command twice if there is an error
 - name: Install Canvas dependencies2
