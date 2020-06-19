@@ -17,9 +17,19 @@
 - name: Rename dir name
   shell: cd /data/wwwroot; if [ ! -d "canvas" ]; then mv *instructure-canvas-lms* canvas; fi
 
-# install Canvas by OS_family
+#2 install dependencies by OS_family
 - name: Install this role on {{ansible_os_family}}
   include: "{{ansible_os_family}}.yml"
+
+#3 install Canvas
+- name: Install Canvas dependencies
+  shell: |
+    bundle install
+    yarn install --pure-lockfile
+    yarn install --pure-lockfile
+  args:
+    chdir: /data/wwwroot/canvas
+
 
 # configure Canvas
 - block:
