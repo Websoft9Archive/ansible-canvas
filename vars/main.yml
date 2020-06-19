@@ -3,44 +3,10 @@ region: "0"
 
 # canvas variable
 
-canvas_db_name: canvas
-canvas_db_user: canvas
-canvas_db_password: "123456"
-
 preend_certbot: True
-nginx_reverse_proxy_port: "8065"
+nginx_reverse_proxy_port: "3000"
 
-# role_mysql
-mysql_version: "5.7"       
-mysql_root_password: "123456"
-mysql_remote: True
 
-# docker
-docker_applications: 'phpmyadmin'
 
-# 生成应用数据库和用户
-mysql_databases:
- - name: canvas
-   encoding: utf8
- 
-mysql_users:
- - name: canvas
-   host: localhost
-   priv: 'canvas.*:ALL'
 
-# 初始化MySQL root密码
-init_db: 
-    mysql:
-      user: root
-      password: "123456"  
-  
-# 应用数据库信息
-init_application:
-  canvas:
-    service: canvas
-    database: canvas 
-    database_user: canvas
-    database_host: localhost
-    database_password: "123456"
-    config_path:
-      - /opt/canvas/config/config.json
+
