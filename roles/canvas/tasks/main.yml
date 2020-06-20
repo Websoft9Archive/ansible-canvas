@@ -41,10 +41,11 @@
 #  postgresql creatdb command need su to postgres
 - name: Createdb and connect Redis for canvas when connection successful
   shell: |
-    chown -R   canvas:postgres /data/wwwroot/canvas
+    chown -R canvas:postgres /data/wwwroot/canvas
     sudo -u postgres createuser $USER
-    sudo -u postgres psql -c "alter user $USER with superuser" postgres
+    sudo -u postgres psql -c "alter user $USER with superuser" postgres 
     bundle exec rails canvas:compile_assets
+    bundle exec rails db:initial_setup
     echo -e "development:\n  cache_store: redis_store" > config/cache_store.yml
     echo -e "development:\n  servers:\n  - redis://localhost" > config/redis.yml
     
