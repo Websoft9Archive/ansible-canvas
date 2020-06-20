@@ -26,10 +26,13 @@
   shell: |
     bundle install
     yarn install --pure-lockfile 
-    for config in amazon_s3 delayed_jobs domain cache_store redis file_store outgoing_mail security external_migration; \
-          do cp -v config/$config.yml.example config/$config.yml; done
+    for config in amazon_s3 database \
+    delayed_jobs domain file_store outgoing_mail security external_migration; \
+    do cp config/$config.yml.example config/$config.yml; done
     cp config/dynamic_settings.yml.example config/dynamic_settings.yml
     cp config/database.yml.example config/database.yml
+    cp config/outgoing_mail.yml.example config/outgoing_mail.yml
+    cp config/domain.yml.example config/domain.yml
   args:
     chdir: /data/wwwroot/canvas
     
@@ -38,13 +41,14 @@
     sed -i '18,25s/username: canvas/username: postgres/g' /data/wwwroot/canvas/config/database.yml
     sed -i '18,25s/password: your_password/password: {{postgresql_password}}/g'  /data/wwwroot/canvas/config/database.yml
 
+
 #  postgresql creatdb command need su to postgres
 - name: Createdb and connect Redis for canvas when connection successful
   shell: |
-    export RAILS_ENV=production
-    RAILS_ENV=production bundle exec rake db:initial_setup
+    RAILS_ENV=production bundle exec rake canvas:compile_assets
     echo -e "development:\n  cache_store: redis_store" > config/cache_store.yml
     echo -e "development:\n  servers:\n  - redis://localhost" > config/redis.yml
+    chown -R   canvas:canvas /data/wwwroot/canvas
   args:
     chdir: /data/wwwroot/canvas
 
