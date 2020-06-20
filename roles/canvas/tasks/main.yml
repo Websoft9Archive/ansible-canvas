@@ -3,14 +3,6 @@
   user:
     name: canvas
     shell: /usr/sbin/nologin
-
-- name: Create postgresql_user:canvas and Build postgresql_database:canvas_production
-  shell: | 
-    chown -R canvas:postgres /data/wwwroot/canvas
-    sudo -u postgres createuser canvas --no-createdb --no-superuser --no-createrole --pwprompt
-    sudo -u postgres createdb canvas_production --owner=canvas
-    sudo -u postgres createuser $USER
-    sudo -u postgres psql -c "alter user $USER with superuser" postgres
     
 - name: rm -rf /data/wwwroot/canvas for second installation
   shell: rm -rf /data/wwwroot/canvas
@@ -24,6 +16,14 @@
     
 - name: Rename dir name
   shell: cd /data/wwwroot; if [ ! -d "canvas" ]; then mv *instructure-canvas-lms* canvas; fi
+
+- name: Create postgresql_user:canvas and Build postgresql_database:canvas_production
+  shell: | 
+    chown -R canvas:postgres /data/wwwroot/canvas
+    sudo -u postgres createuser canvas --no-createdb --no-superuser --no-createrole --pwprompt
+    sudo -u postgres createdb canvas_production --owner=canvas
+    sudo -u postgres createuser $USER
+    sudo -u postgres psql -c "alter user $USER with superuser" postgres
 
 #2 install dependencies by OS_family
 - name: Install this role on {{ansible_os_family}}
