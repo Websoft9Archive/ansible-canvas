@@ -8,9 +8,10 @@
   shell: | 
     sudo -u postgres createuser canvas --no-createdb --no-superuser --no-createrole --pwprompt
     sudo -u postgres createdb canvas_production --owner=canvas
+    chown -R canvasuser:postgres /data/wwwroot/canvas
     sudo -u postgres createuser $USER
     sudo -u postgres psql -c "alter user $USER with superuser" postgres
-
+    
 - name: rm -rf /data/wwwroot/canvas for second installation
   shell: rm -rf /data/wwwroot/canvas
   
@@ -65,7 +66,6 @@
   shell: |
     yarn install
     RAILS_ENV=production bundle exec rake canvas:compile_assets
-    chown -R canvas:postgres /data/wwwroot/canvas
     RAILS_ENV=production bundle exec rake db:initial_setup
     sudo adduser --disabled-password --gecos canvas canvasuser
     sudo chown canvasuser config/*.yml
