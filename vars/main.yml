@@ -18,6 +18,4 @@ docker_applications:
   - phppgadmin
 
 postgresql_remote: True
-postgresql_databases:
-  - name: canvas_development
-    encoding: utf8
+
