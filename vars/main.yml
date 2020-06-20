@@ -19,5 +19,5 @@ docker_applications:
 
 postgresql_remote: True
 postgresql_databases:
-  - name: canvas_production
+  - name: canvas_development
     encoding: utf8
