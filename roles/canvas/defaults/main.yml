@@ -3,9 +3,11 @@ canvas_connect_sql_password: "123456"
 
 # rails_env: test , development ,production
 rails_env: "production"
-# canvas administrator_login: email, password, name 
+
+# canvas administrator_login: login_email, login_password, user 
 canvas_lms_admin_email: "12345678@qq.com"
-canvas_lms_password: "12345678"
+# password :no less than 8 digits
+canvas_lms_password: "12345678" 
 canvas_lms_accout_name: "xx"
 # cnavas_lms_stats_collection:opt_in, opt_out, or anonymized
 cnavas_lms_stats_collection: "opt_in"

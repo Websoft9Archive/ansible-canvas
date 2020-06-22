@@ -20,8 +20,8 @@
 - name: Create postgresql_user:canvas and Build postgresql_database:canvas_production
   shell: | 
     chown -R canvas:postgres /data/wwwroot/canvas
-    echo {{canvas_connect_sql_password}} | sudo -u postgres createuser canvas --no-createdb \
-    --no-superuser --no-createrole --pwprompt --stdin
+    sudo -u postgres createuser canvas --no-createdb \
+    --no-superuser --no-createrole --pwprompt 
     sudo -u postgres createdb canvas_production --owner=canvas
     sudo -u postgres createuser $USER
     sudo -u postgres psql -c "alter user $USER with superuser" postgres
@@ -64,13 +64,13 @@
     
 
 # 
-- name: Createdb and connect Redis for canvas when connection successful
+- name: Set login_email, login_password,user 
   shell: |
     yarn install
     RAILS_ENV={{rails_env}} bundle exec rake canvas:compile_assets
     sudo chown -R canvas public/dist/brandable_css
     RAILS_ENV={{rails_env}}  CANVAS_LMS_ADMIN_EMAIL={{canvas_lms_admin_email}} \
-    CANVAS_LMS_ADMIN_PASSWORD={ {canvas_lms_password}} CANVAS_LMS_ACCOUNT_NAME={{canvas_lms_accout_name}} \  CANVAS_LMS_STATS_COLLECTION={{cnavas_lms_stats_collection}}    bundle exec rake db:initial_setup
+    CANVAS_LMS_ADMIN_PASSWORD={{canvas_lms_password}} CANVAS_LMS_ACCOUNT_NAME={{canvas_lms_accout_name}} \  CANVAS_LMS_STATS_COLLECTION={{cnavas_lms_stats_collection}} bundle exec rake db:initial_setup
     sudo adduser --disabled-password --gecos canvas canvas
     sudo chown canvas config/*.yml
     sudo chmod 400 config/*.yml
