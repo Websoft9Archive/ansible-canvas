@@ -20,7 +20,8 @@
 - name: Create postgresql_user:canvas and Build postgresql_database:canvas_production
   shell: | 
     chown -R canvas:postgres /data/wwwroot/canvas
-    sudo -u postgres createuser canvas --no-createdb --no-superuser --no-createrole
+    sudo -u postgres createuser canvas --no-createdb \
+    --no-superuser --no-createrole --pwprompt
     sudo -u postgres createdb canvas_production --owner=canvas
     sudo -u postgres createuser $USER
     sudo -u postgres psql -c "alter user $USER with superuser" postgres
@@ -61,7 +62,7 @@
     sed -i '18,25s/password: your_password/password: 123456/' /data/wwwroot/canvas/config/database.yml
     
 
-#  postgresql creatdb command need su to postgres
+# 
 - name: Createdb and connect Redis for canvas when connection successful
   shell: |
     yarn install
