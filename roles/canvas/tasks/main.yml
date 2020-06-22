@@ -68,10 +68,11 @@
   shell: |
     yarn install
     RAILS_ENV={{rails_env}} bundle exec rake canvas:compile_assets
+    sudo chown -R canvas public/dist/brandable_css
     RAILS_ENV={{rails_env}}  CANVAS_LMS_ADMIN_EMAIL={{canvas_lms_admin_email}} \
     CANVAS_LMS_ADMIN_PASSWORD={ {canvas_lms_password}} CANVAS_LMS_ACCOUNT_NAME={{canvas_lms_accout_name}} \  CANVAS_LMS_STATS_COLLECTION={{cnavas_lms_stats_collection}}    bundle exec rake db:initial_setup
-    sudo adduser --disabled-password --gecos canvas canvasuser
-    sudo chown canvasuser config/*.yml
+    sudo adduser --disabled-password --gecos canvas canvas
+    sudo chown canvas config/*.yml
     sudo chmod 400 config/*.yml
   args:
     chdir: /data/wwwroot/canvas
