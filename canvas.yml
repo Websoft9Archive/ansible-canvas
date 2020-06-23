@@ -11,7 +11,7 @@
   
   roles:
     - {role: role_common, tags: "role_common"}
-    - {role: role_nginx, tags: "role_nginx"}  
+#    - {role: role_nginx, tags: "role_nginx"}  
     - {role: role_postgresql, tags: "role_postgresql"}
     - {role: role_docker, tags: "role_docker"}
     - {role: role_ruby, tags: "role_ruby"}  
