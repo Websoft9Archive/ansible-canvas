@@ -63,29 +63,49 @@
   shell: |
     sed -i '18,25s/password: your_password/password: {{canvas_connect_sql_password}}/' /data/wwwroot/canvas/config/database.yml
     
-
-# 
-- name: Set login_email, login_password,user 
+- name: postgresql initialization & Set login_email, login_password,user
   shell: |
     yarn install
     RAILS_ENV={{rails_env}} bundle exec rake canvas:compile_assets
-    sudo chown -R canvas public/dist/brandable_css
+    sudo chown -R canvas public/dist/brandable_css 
     RAILS_ENV={{rails_env}}  CANVAS_LMS_ADMIN_EMAIL={{canvas_lms_admin_email}} \
     CANVAS_LMS_ADMIN_PASSWORD={{canvas_lms_password}} CANVAS_LMS_ACCOUNT_NAME={{canvas_lms_accout_name}} \  CANVAS_LMS_STATS_COLLECTION={{cnavas_lms_stats_collection}} bundle exec rake db:initial_setup
-    sudo adduser --disabled-password --gecos canvas canvas
+    sudo adduser --disabled-password --gecos canvas canvas 
     sudo chown canvas config/*.yml
-    sudo chmod 400 config/*.yml
+#    sudo chmod 400 config/*.yml
   args:
     chdir: /data/wwwroot/canvas
 
+# Apache Configure
+- block: 
+  - name: Open apache2 module:rewrite,passenger,ssl
+      shell: |
+        sudo apache2ctl restart
+        sudo a2enmod rewrite
+        sudo a2enmod passenger
+        sudo a2enmod ssl
+        sudo unlink /etc/apache2/sites-enabled/000-default.conf
+      args:
+        chdir: /data/wwwroot/canvas   
 
+  - name: Enabled site canvas
+      shell: sudo a2ensite canvas  
+      args:
+        chdir: /etc/apache2/sites-available
+  
+  - name: Copy  VirtualHosts file with owner and permissions
+    copy:
+      src:  canvas.conf
+      dest: /etc/apache2/sites-available/canvas.conf
+      owner: canvas
+      group: canvas
+      mode: '0644'
 
-
-# set soft link, -f enforce the exist links
-# ln -sf src des
-#- name: set soft link
-#  shell: |
-    
+  - name: Restart apache2
+      service:
+        name: apache2
+        state: restarted
+        enabled: yes
 
 # Check version,
 # must use sudo sh -c to solve the no-root permission
@@ -95,7 +115,12 @@
 
 
 # check service state
-- name: Check Canvas Service
-  shell: systemctl status canvas | grep Active*
-  register: check_canvas_service
-  notify: check_canvas_service
+#- name: Check Canvas Service
+#  shell: systemctl status canvas | grep Active*
+# register: check_canvas_service
+# notify: check_canvas_service
+
+- name: Check Apache2 Service
+  shell: systemctl status apache2 | grep Active*
+  register: check_apache2_service
+  notify: check_apache2_service

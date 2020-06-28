@@ -1,3 +1,3 @@
-- name: check_canvas_service
+- name: check_apache2_service
   debug:
-    var: check_canvas_service.stdout
+    var: check_apache2_service.stdout
