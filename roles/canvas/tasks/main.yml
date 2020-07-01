@@ -76,36 +76,6 @@
   args:
     chdir: /data/wwwroot/canvas
 
-# Apache Configure
-- block: 
-  - name: Open apache2 module:rewrite,passenger,ssl
-      shell: |
-        sudo apache2ctl restart
-        sudo a2enmod rewrite
-        sudo a2enmod passenger
-        sudo a2enmod ssl
-        sudo unlink /etc/apache2/sites-enabled/000-default.conf
-      args:
-        chdir: /data/wwwroot/canvas   
-
-  - name: Enabled site canvas
-      shell: sudo a2ensite canvas  
-      args:
-        chdir: /etc/apache2/sites-available
-  
-  - name: Copy  VirtualHosts file with owner and permissions
-    copy:
-      src:  canvas.conf
-      dest: /etc/apache2/sites-available/canvas.conf
-      owner: canvas
-      group: canvas
-      mode: '0644'
-
-  - name: Restart apache2
-      service:
-        name: apache2
-        state: restarted
-        enabled: yes
 
 # Check version,
 # must use sudo sh -c to solve the no-root permission
