@@ -17,6 +17,7 @@
 - name: Rename dir name
   shell: cd /data/wwwroot; if [ ! -d "canvas" ]; then mv *instructure-canvas-lms* canvas; fi
 
+# Database configuration
 - name: Create postgresql_user:canvas and Build postgresql_database:canvas_production
   shell: | 
     chown -R canvas:postgres /data/wwwroot/canvas
@@ -26,11 +27,11 @@
     sudo -u postgres createuser $USER
     sudo -u postgres psql -c "alter user $USER with superuser" postgres
 
-#2 install dependencies by OS_family
+# Install dependencies by OS_family
 - name: Install this role on {{ansible_os_family}}
   include: "{{ansible_os_family}}.yml"
 
-#3 install Canvas
+# Install Canvas
 - name: Install Canvas dependencies and rename configuration file
   shell: |
     bundle install --path vendor/bundle
