@@ -102,6 +102,13 @@
     cd QTIMigrationTool
     chmod +x migrate.py
     
+# Automated jobs
+- name: Start Apache
+  service:
+    name: canvas_init
+    state: started
+    enabled: yes
+    
 - block:
   - name: Check Canvas Version
     shell: sudo sh -c "echo 'no method for canvas version' 1>> /data/logs/install_version.txt"
