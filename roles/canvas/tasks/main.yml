@@ -89,10 +89,18 @@
     enabled: yes
     
 # Optimizing File Downloads
-- name: Copy VirtualHosts file with owner and permissions
+- name: Set mod_xsendfile for optimizing file downloads
   copy:
     src:  production-local.rb
     dest: /data/wwwroot/canvas/config/environments/production-local.rb
+    
+# Install QTIMigrationTool
+- name: Install QTIMigrationTool
+  shell: |
+    cd /data/wwwroot/canvas/vendor
+    git clone https://github.com/instructure/QTIMigrationTool.git QTIMigrationTool
+    cd QTIMigrationTool
+    chmod +x migrate.py
     
 - block:
   - name: Check Canvas Version
