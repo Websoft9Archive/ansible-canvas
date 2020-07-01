@@ -44,12 +44,18 @@
     chmod +x migrate.py
     
 # Automated jobs
-- name: Start Apache
+- name: Setting canvas_init service
+  copy:
+    src: canvas_init.service
+    dest: /lib/systemd/system/canvas_init.service
+    
+- name: Start and enable canvas_init.service
   service:
     name: canvas_init
     state: started
     enabled: yes
-    
+
+# check version
 - block:
   - name: Check Canvas Version
     shell: sudo sh -c "echo 'no method for canvas version' 1>> /data/logs/install_version.txt"
