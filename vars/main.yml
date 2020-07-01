@@ -11,6 +11,8 @@ ruby_version: "2.4"
 
 redis_version: "5.0"
 
+passenger_integration: apache
+
 postgresql_version: "9.5"
 postgresql_password: "123456"
 
@@ -18,4 +20,3 @@ docker_applications:
   - phppgadmin
 
 postgresql_remote: True
-
