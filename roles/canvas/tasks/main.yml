@@ -4,11 +4,7 @@
 
 
     
-# Optimizing File Downloads
-- name: Set mod_xsendfile for optimizing file downloads
-  copy:
-    src:  production-local.rb
-    dest: /data/wwwroot/canvas/config/environments/production-local.rb
+
 
 # Cache configuration
 - name: Set Redis of Cache configuration
