@@ -77,18 +77,25 @@
     chdir: /data/wwwroot/canvas
 
 # Apache Configure
-- block:  
-  - name: Copy VirtualHosts file with owner and permissions
-    copy:
-      src:  canvas.conf
-      dest: /etc/httpd/conf.d/vhost.conf
+- name: Copy VirtualHosts file with owner and permissions
+  copy:
+    src:  canvas.conf
+    dest: /etc/httpd/conf.d/vhost.conf
 
-  - name: Restart Apache
-    service:
-      name: apache
-      state: restarted
-      enabled: yes
-
+- name: Restart Apache
+  service:
+    name: apache
+    state: restarted
+    enabled: yes
+    
+# Optimizing File Downloads
+- name: Copy VirtualHosts file with owner and permissions
+  copy:
+    src:  production-local.rb
+    dest: /data/wwwroot/canvas/config/environments/production-local.rb
+    
 - block:
   - name: Check Canvas Version
     shell: sudo sh -c "echo 'no method for canvas version' 1>> /data/logs/install_version.txt"
+    
+ 
