@@ -21,7 +21,8 @@
 - name: Create postgresql_user:canvas and Build postgresql_database:canvas_production
   shell: | 
     chown -R canvas:postgres /data/wwwroot/canvas
-    sudo -u postgres createuser canvas --no-createdb --no-superuser --no-createrole --pwprompt 
+    sudo -u postgres createuser canvas --no-createdb --no-superuser --no-createrole
+    echo "ALTER USER canvas004 WITH PASSWORD '{{canvas_postgresql_password}}';\q" | sudo -u postgres psql
     sudo -u postgres createdb canvas_production --owner=canvas
     sudo -u postgres createuser $USER
     sudo -u postgres psql -c "alter user $USER with superuser" postgres
