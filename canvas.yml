@@ -10,7 +10,7 @@
     - vars/main.yml
     
   vars:
-    canvas_postgresql_password: {{postgresql_password}}
+    canvas_postgresql_password: "{{postgresql_password}}"
   
   roles:
     - {role: role_common, tags: "role_common"}
