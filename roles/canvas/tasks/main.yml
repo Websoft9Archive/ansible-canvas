@@ -1,12 +1,8 @@
 
 
-  
 
-- name: Restart Apache
-  service:
-    name: apache
-    state: restarted
-    enabled: yes
+
+
     
 # Optimizing File Downloads
 - name: Set mod_xsendfile for optimizing file downloads

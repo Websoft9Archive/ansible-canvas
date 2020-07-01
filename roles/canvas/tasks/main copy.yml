@@ -12,6 +12,7 @@
     src: "{{canvas_download_url}}"
     dest: "/data/wwwroot"
     owner: www-data
+    group: www-data
     remote_src: yes
     mode: 0750
     
