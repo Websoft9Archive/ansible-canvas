@@ -1,21 +1,13 @@
 canvas_download_url: "http://github.com/instructure/canvas-lms/zipball/stable"
-canvas_connect_sql_password: "123456"
-
-# rails_env: test , development ,production
-rails_env: "production"
+canvas_postgresql_password: "123456"
 
 # canvas administrator_login: login_email, login_password, user 
-canvas_lms_admin_email: "12345678@qq.com"
+canvas_admin_email: "12345678@qq.com"
 # password :no less than 8 digits
-canvas_lms_password: "12345678" 
-canvas_lms_accout_name: "xx"
+canvas_password: "12345678" 
+canvas_accout_name: "xx"
 # cnavas_lms_stats_collection:opt_in, opt_out, or anonymized
-cnavas_lms_stats_collection: "opt_in"
-
-
-
-
-
+cnavas_stats_collection: "opt_in"
 
 
 
