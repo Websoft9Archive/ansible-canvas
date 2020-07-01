@@ -2,14 +2,9 @@ canvas_download_url: "http://github.com/instructure/canvas-lms/zipball/stable"
 canvas_postgresql_password: "123456"
 
 # canvas administrator_login: login_email, login_password, user 
-canvas_admin_email: "12345678@qq.com"
+canvas_admin_email: "help@websoft9.com"
 # password :no less than 8 digits
-canvas_password: "12345678" 
-canvas_accout_name: "xx"
+canvas_password: "websoft9" 
+canvas_accout_name: "admin"
 # cnavas_lms_stats_collection:opt_in, opt_out, or anonymized
 cnavas_stats_collection: "opt_in"
-
-
-
-
-
