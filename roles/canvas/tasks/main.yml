@@ -42,7 +42,6 @@
     cp config/outgoing_mail.yml.example config/outgoing_mail.yml
     cp config/domain.yml.example config/domain.yml
     cp config/security.yml.example config/security.yml
-    cp config/cache_store.yml.example config/cache_store.yml
   args:
     chdir: /data/wwwroot/canvas
 
@@ -93,7 +92,15 @@
   copy:
     src:  production-local.rb
     dest: /data/wwwroot/canvas/config/environments/production-local.rb
-    
+
+# Cache configuration
+- name: Set Redis of Cache configuration
+  shell: |
+    cp config/cache_store.yml.example config/cache_store.yml
+    cp config/redis.yml.example config/redis.yml
+  args:
+    chdir: /data/wwwroot/canvas
+
 # Install QTIMigrationTool
 - name: Install QTIMigrationTool
   shell: |
