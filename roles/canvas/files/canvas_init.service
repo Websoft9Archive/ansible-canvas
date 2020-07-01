@@ -1,1 +1,11 @@
 
+[Unit]
+Description=Canvas init
+After=apache.service
+[Service]
+Type=simple
+ExecStart=-/data/wwwroot/canvas/canvas_init start
+User=canvas
+Group=canvas
+[Install]
+WantedBy=multi-user.target
