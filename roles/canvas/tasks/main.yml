@@ -86,25 +86,25 @@
         sudo unlink /etc/apache2/sites-enabled/000-default.conf
       args:
         chdir: /data/wwwroot/canvas   
-
-  - name: Enabled site canvas
-      shell: sudo a2ensite canvas  
-      args:
-        chdir: /etc/apache2/sites-available
   
-  - name: Copy  VirtualHosts file with owner and permissions
+  - name: Copy VirtualHosts file with owner and permissions
     copy:
       src:  canvas.conf
       dest: /etc/apache2/sites-available/canvas.conf
       owner: canvas
       group: canvas
       mode: '0644'
+   
+  - name: Enabled site canvas
+    shell: a2ensite canvas  
+    args:
+      chdir: /etc/apache2/sites-available
 
-  - name: Restart apache2
-      service:
-        name: apache2
-        state: restarted
-        enabled: yes
+  - name: Restart Apache
+    service:
+      name: apache
+      state: restarted
+      enabled: yes
 
 # Check version,
 # must use sudo sh -c to solve the no-root permission
