@@ -11,6 +11,7 @@
   unarchive:
     src: "{{canvas_download_url}}"
     dest: "/data/wwwroot"
+    owner: www-data
     remote_src: yes
     mode: 0750
     

@@ -1,19 +1,6 @@
 
 
-# Canvas ownership
-- name: Set Canvas ownership
-  shell: |
-    adduser --disabled-password --gecos canvas canvas 
-    chown canvas config/*.yml
-    sudo chmod 640 config/*.yml
-  args:
-    chdir: /data/wwwroot/canvas
-
-# Apache Configure
-- name: Copy VirtualHosts file with owner and permissions
-  copy:
-    src:  canvas.conf
-    dest: /etc/httpd/conf.d/vhost.conf
+  
 
 - name: Restart Apache
   service:
