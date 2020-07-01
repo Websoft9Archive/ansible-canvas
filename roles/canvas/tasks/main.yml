@@ -63,8 +63,7 @@
     chdir: /data/wwwroot/canvas
     
 - name: Set database connection
-  shell: |
-    sed -i '18,25s/password: your_password/password: {{canvas_connect_sql_password}}/' /data/wwwroot/canvas/config/database.yml
+  shell: sed -i '18,25s/password: your_password/password: {{canvas_postgresql_password}}/' /data/wwwroot/canvas/config/database.yml
     
 - name: postgresql initialization & Set login_email, login_password,user
   shell: |
