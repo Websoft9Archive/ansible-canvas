@@ -20,3 +20,12 @@ docker_applications:
   - phppgadmin
 
 postgresql_remote: True
+
+init_db: 
+  postgresql:
+    admin: postgres
+    users: ["canvas"]
+    password: "123456"
+    service_before: "apache.service"
+    config_paths:
+      - /data/wwwroot/canvas/config/database.yml
