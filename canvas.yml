@@ -13,12 +13,12 @@
     canvas_postgresql_password: "{{postgresql_password}}"
   
   roles:
-    - {role: role_common, tags: "role_common"}
-    - {role: role_postgresql, tags: "role_postgresql"}
-    - {role: role_docker, tags: "role_docker"}
-    - {role: role_ruby, tags: "role_ruby"}
-    - {role: role_nodejs, tags: "role_nodejs"}
-    - {role: role_apache, tags: "role_apache"}
-    - {role: role_passenger, tags: "role_passenger"}
+   # - {role: role_common, tags: "role_common"}
+   # - {role: role_postgresql, tags: "role_postgresql"}
+   # - {role: role_docker, tags: "role_docker"}
+   # - {role: role_ruby, tags: "role_ruby"}
+   # - {role: role_nodejs, tags: "role_nodejs"}
+  #  - {role: role_apache, tags: "role_apache"}
+   # - {role: role_passenger, tags: "role_passenger"}
     - {role: canvas, tags: "canvas"}
     - {role: role_preend, tags: "role_preend"}
