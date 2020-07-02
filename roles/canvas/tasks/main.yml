@@ -120,7 +120,7 @@
     chmod +x migrate.py
 
 # Automated jobs
-block:
+- block:
   - name: Copy canvas_init.service file
     copy:
       src: canvas_init.service
