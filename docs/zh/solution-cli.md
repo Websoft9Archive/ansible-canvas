@@ -1,5 +1,5 @@
 # CLI
 
-Canvas 提供了强大的的命令行工具 `canvasctl`  
+Canvas 提供一序列脚本工具，脚本目录： `/data/wwwroot/canvas/script`  
 
-Erlang 语言提供了便捷的开发调试命令行工具 `erl`  
+Passenger 应用服务器提供了命令行工具 `passenger`  

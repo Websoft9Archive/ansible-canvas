@@ -24,4 +24,4 @@ yum update -y --skip-broken
 
 ## Canvas升级
 
-详情参考官方升级文档：[Upgrading Canvas](https://www.canvas.com/upgrade.html)
+升级有点小复杂，详情参考官方升级文档：[Upgrading Canvas](https://github.com/instructure/canvas-lms/wiki/Upgrading)

@@ -29,8 +29,9 @@ module.exports = [
         collapsable: false,
         children: [
           '/admin-services',
-          '/admin-mysql',
-          ['https://support.websoft9.com/docs/linux/lang-erlang.html','Erlang'],
+          '/admin-postgresql',
+          ['https://support.websoft9.com/docs/linux/webs-apache.html','Apache'],
+          ['https://support.websoft9.com/docs/linux/lang-ruby.html','Ruby'],
           ['https://support.websoft9.com/docs/linux/admin-practices.html','Linux'],
         ]
       },

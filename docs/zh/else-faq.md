@@ -41,6 +41,10 @@ find /data/wwwroot/ -type d -exec chmod 750 {} \;
 find /data/wwwroot/ -type f -exec chmod 640 {} \;
 ```
 
+#### 推荐一个国内学习 Canvas 的网站
+
+小编认为[上海交通大学教育技术中心](https://v.sjtu.edu.cn/guide/)还不错
+
 #### 部署和安装有什么区别？
 
 部署是将一序列软件按照不同顺序，先后安装并配置到服务器的过程，是一个复杂的系统工程。  

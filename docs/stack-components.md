@@ -47,19 +47,21 @@ sudo cat /data/logs/install_version.txt
 # Linux Version
 lsb_release -a
 
-# Nginx  Version
-nginx -V
+# Apache version on Centos
+httpd -v
 
-# Java version
-java -v
+# Apache version on Ubuntu
+apache2 -v
+
+# Passenger version
+passenger -v
+
+# Ruby version
+ruby -v
+
+# Node.js version
+node -v
 
 # Docker Version
 docker -v
-
-# erlang  Version
-yum info erlang
-apt show erlang
-
-# Canvas version
-canvasctl status | grep Canvas*
 ```

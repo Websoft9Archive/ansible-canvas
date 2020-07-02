@@ -10,23 +10,27 @@
 
 ## Canvas 安装向导
 
-1. 使用本地电脑的 Chrome 或 Firefox 浏览器访问网址：*http://域名:15672* 或 *http://Internet IP:15672*, 进入初始化页面
-   ![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-login-websoft9.png)
+1. 使用本地电脑的 Chrome 或 Firefox 浏览器访问网址：*http://域名* 或 *http://服务器公网IP*, 进入登录页面
+   ![canvas 登录](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-login-websoft9.png)
 
 2. 输入账号密码（[不知道账号密码？](/zh/stack-accounts.md#canvas)），成功登录到 Canvas 后台  
-   ![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-bk-websoft9.png)
+   ![canvas 后台](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-console001-websoft9.png)
 
-3. 登录后通过：【Users】>【Admin】>【Permissions】>【Update this user】设置新密码  
-   ![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-pw-websoft9.png)
+3. 依次打开：【管理员】>【设置】>【账户设置】设置语言  
+   ![canvas 设置语言](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-setlanguage-websoft9.png)
 
-> 需要了解更多 Canvas 的使用，请参考官方文档：[Canvas Documentation](https://www.canvas.com/documentation.html)
+4. 依次打开：【账户】>【设置】>【编辑设置】修改默认邮件账户和密码
+   ![canvas 修改账号](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-setaccount001-websoft9.png)
+   ![canvas 修改密码](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-setaccount002-websoft9.png)
+
+> 需要了解更多 Canvas 的使用，请参考官方文档：[Canvas Guides](https://community.canvaslms.com/community/answers/guides)
 
 ## 常见问题
 
 #### 浏览器打开IP地址，无法访问 Canvas（白屏没有结果）？
 
-您的服务器对应的安全组15672端口没有开启（入规则），导致浏览器无法访问到服务器的任何内容
+您的服务器对应的安全组 80 端口没有开启（入规则），导致浏览器无法访问到服务器的任何内容
 
-#### Canvas 服务启动失败？
+#### Canvas 访问速度很慢？
 
-暂无
+Canvas 对服务器的配置要求极高，最低配置为2核8G

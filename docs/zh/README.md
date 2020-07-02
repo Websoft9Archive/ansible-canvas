@@ -6,9 +6,9 @@ home: false
 
 本文档由 [Websoft9](https://www.websoft9.com/) 公司提供，用于指导用户学习 Canvas 的安装部署与基本运维技术，包括：Canvas部署、初始化安装、环境配置、HTTPS、SMTP、备份升级和连接云服务器操作等基本操作。
 
-[Canvas](https://www.canvas.com) 流行的开源消息队列系统，用erlang语言开，是AMQP（高级消息队列协议）的标准实现。用于在分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。
+[Canvas](https://www.instructure.com/canvas/) 是一个基于云端的开源的在线学习系统（LMS），使学校能够构建数字学习环境，以应对其机构面临的独特挑战。Canvas简化了教学，提高了学习效率，并消除了支持和发展传统学习技术的麻烦。它具有开放，直观的特点，通过所有数字工具和内容，简化老师的教学，让学生获得更简单的互联网学习体验。
 
-![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-gui-websoft9.png)
+![](https://libs.websoft9.com/Websoft9/DocsPicture/en/canvas-gui-websoft9.png)
 
 ---
 

@@ -10,22 +10,36 @@ Canvas 预装包包含 Canvas 运行所需一序列支撑软件（简称为“�
 
 ### Canvas
 
-Canvas 安装目录： */data/canvas*  
-Canvas 日志目录： */data/logs/canvas*  
+Canvas 安装目录： */data/wwwroot/canvas*  
+Canvas 日志目录： */data/wwwroot/canvas/log*  
+Canvas 配置目录： */data/wwwroot/canvas/config*  
 
-### Nginx
+### Apache
 
-Nginx 虚拟主机配置文件：*/etc/nginx/conf.d/default.conf*  
-Nginx 主配置文件： */etc/nginx/nginx.conf*  
-Nginx 日志文件： */var/log/nginx*  
-Nginx 伪静态规则目录： */etc/nginx/conf.d/rewrite*
+Apache 虚拟主机配置文件：*/etc/httpd/conf.d/vhost.conf*  
+Apache 主配置文件：*/etc/httpd/conf/httpd.conf*  
+Apache 日志文件：*/var/log/httpd*
 
-### MYSQL
+### Passenger
 
-MySQL 安装路径: */usr/local/mysql*  
-MySQL 数据文件 */data/mysql*  
-MySQL 配置文件: */etc/my.cnf*    
-MySQL 可视化管理地址: *http://服务器公网IP/phpmyadmin*，用户名和密码请见 [账号密码](/zh/stack-accounts.md) 章节。
+Passenger 安装目录：*/usr/lib/ruby/vendor_ruby/phusion_passenger*  
+Passenger 配置文件：*/etc/apache2/mods-enabled/passenger.conf*
+
+### Node.js
+
+Node.JS 模块目录: */usr/lib/node_modules*  
+Node.js 应用安装目录: */data/wwwroot*  
+Node.JS 日志文件: */root/.pm2/pm2.log*
+
+### Ruby
+
+Ruby 安装目录：*/usr/lib/ruby*  
+
+### PostgreSQL
+
+PostgreSQL 配置文件: */data/postgresql/config*  
+PostgreSQL 数据目录：*/data/postgresql/pgdata*  
+PostgreSQL 日志目录: */data/postgresql/log
 
 ## 端口号
 
@@ -35,9 +49,10 @@ MySQL 可视化管理地址: *http://服务器公网IP/phpmyadmin*，用户名�
 
 | 名称 | 端口号 | 用途 |  必要性 |
 | --- | --- | --- | --- |
-| HTTP | 15672 | 通过 HTTP 访问 Canvas 控制台 | 可选 |
-| TCP | 5672 | epmd | 可选 |
-| TCP | 55672 | Erlang distribution | 可选 |
+| TCP | 80 | 通过 HTTP 访问 Canvas | 可选 |
+| TCP | 443 | 通过 HTTPS 访问 Canvas  | 可选 |
+| TCP | 9090 | PostgreSQL 可视化管理 | 可选 |
+| TCP | 5432 | PostgreSQL 服务端 | 可选 |
 
 ## 版本号
 
@@ -50,19 +65,21 @@ sudo cat /data/logs/install_version.txt
 # Linux Version
 lsb_release -a
 
-# Nginx  Version
-nginx -V
+# Apache version on Centos
+httpd -v
 
-# Java version
-java -v
+# Apache version on Ubuntu
+apache2 -v
+
+# Passenger version
+passenger -v
+
+# Ruby version
+ruby -v
+
+# Node.js version
+node -v
 
 # Docker Version
 docker -v
-
-# erlang  Version
-yum info erlang
-apt show erlang
-
-# Canvas version
-canvasctl status | grep Canvas*
 ```
