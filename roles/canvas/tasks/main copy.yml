@@ -106,6 +106,7 @@
   shell: |
     cp config/cache_store.yml.example config/cache_store.yml
     cp config/redis.yml.example config/redis.yml
+    chown canvas config/*.yml
   args:
     chdir: /data/wwwroot/canvas
 
@@ -116,12 +117,18 @@
     git clone https://github.com/instructure/QTIMigrationTool.git QTIMigrationTool
     cd QTIMigrationTool
     chmod +x migrate.py
-    
+
+# configure the canvas_init service
+- name: Copy canvas_init.service file
+  copy:
+    src: canvas_init.service
+    dest: '/lib/systemd/system/canvas_init.service'
+
 # Automated jobs
-- name: Start Apache
+- name: Start canvas_init
   service:
     name: canvas_init
-    state: started
+    state: restarted
     enabled: yes
     
 - block:
