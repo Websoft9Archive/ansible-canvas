@@ -2,7 +2,7 @@
 - name: Create User for Canvas
   user:
     name: canvas
-    shell: /usr/sbin/nologin
+    shell: /bin/bash
     
 - name: rm -rf /data/wwwroot/canvas for second installation
   shell: rm -rf /data/wwwroot/canvas
@@ -11,8 +11,8 @@
   unarchive:
     src: "{{canvas_download_url}}"
     dest: "/data/wwwroot"
-    owner: www-data
-    group: www-data
+    owner: canvas
+    group: canvas
     remote_src: yes
     mode: 0750
     
@@ -80,11 +80,12 @@
     chdir: /data/wwwroot/canvas
 
 # Canvas ownership
-- name: Set Canvas ownership
+- name: Set Canvas ownership and Set
   shell: |
     adduser --disabled-password --gecos canvas canvas 
     chown canvas config/*.yml
     sudo chmod 640 config/*.yml
+    setfacl -m u:www-data:rx -R /data/wwwroot/canvas
   args:
     chdir: /data/wwwroot/canvas
 
@@ -115,7 +116,7 @@
     chdir: /data/wwwroot/canvas
 
 # Install QTIMigrationTool
-- name: Install QTIMigrationTool
+- name: Install QTIMigrationTool 
   shell: |
     cd /data/wwwroot/canvas/vendor
     git clone https://github.com/instructure/QTIMigrationTool.git QTIMigrationTool
