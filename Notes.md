@@ -9,113 +9,28 @@
 
 ## 概要
 
+Canvas 是一个开源LMS系统。
 
 
 ## 环境要求
 
-* 程序语言：
-* 应用服务器：
+* 程序语言：Ruby,Nodejs
+* 应用服务器：Apache,Passenger
 * 数据库：postgresql
-* 依赖组件：Ruby  nodejs
-* 服务器配置：
+* 依赖组件：
+* 服务器配置：最低2核8G
 * 其他：
 
 ## 安装说明
 
-
 下面基于不同的安装平台，分别进行安装说明。
 
-### CentOS
 
-```shell
-
-
-```
-
-### Ubuntu
-
-```shell
-# using git clone canvas
-  sudo apt-get install git
-  git clone https://github.com/instructure/canvas-lms.git canvas
-  cd canvas
-  git checkout stable
-
-#  external Dependencies Installation 
-  sudo apt-get install software-properties-common
-  sudo add-apt-repository ppa:brightbox/ruby-ng
-  sudo apt-get update
-# using common roles install ruby, postgresql, nodejs  
-  sudo apt-get install ruby2.4 ruby2.4-dev zlib1g-dev libxml2-dev \
-                       libsqlite3-dev postgresql-9.5 libpq-dev \
-                       libxmlsec1-dev curl make g++
-
-# install yarn: nodejs_roles
- curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
- echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
- sudo apt-get update && sudo apt-get install yarn=1.10.1-1
-
-# set postgresql superuser : postgresql_roles
-  sudo -u postgres createuser $USER
-  sudo -u postgres psql -c "alter user $USER with superuser" postgres
-
-# install bundler: ruby_roles
-  sudo gem install bundler -v 1.13.6
-
-# using bundler install canvas dependencies
-  cd canvas
-  bundle install
-  yarn install --pure-lockfile
-# Sometimes you have to run this command twice if there is an error
-  yarn install --pure-lockfile
-
-```
-
-## 配置
-
-安装完成后，需要依次完成如下配置
-
-```shell
-# default configuration
-  ~/canvas$ for config in amazon_s3 delayed_jobs domain file_store outgoing_mail security external_migration; \
-          do cp -v config/$config.yml.example config/$config.yml; done
-# Dynamic configuration
-  ~/canvas$ cp config/dynamic_settings.yml.example config/dynamic_settings.yml
-
-#  
-  ~/canvas$ bundle exec rails canvas:compile_assets
-
-# sql configuration
-  ~/canvas$ cp config/database.yml.example config/database.yml
-  ~/canvas$ createdb canvas_development
-
-# initial sql  交互式操作: 设置user pwd email
-  ~/canvas$ bundle exec rails db:initial_setup
-
-# test sql configuration
-  psql -c 'CREATE USER canvas' -d postgres
-  psql -c 'ALTER USER canvas CREATEDB' -d postgres
-  createdb -U canvas canvas_test
-  psql -c 'GRANT ALL PRIVILEGES ON DATABASE canvas_test TO canvas' -d canvas_test
-  psql -c 'GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO canvas' -d canvas_test
-  psql -c 'GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO canvas' -d canvas_test
-  RAILS_ENV=test bundle exec rails db:test:reset
-
-  bundle exec rspec spec/models/assignment_spec.rb
-
-# install redis improve canvas
-  sudo apt-get update
-  sudo apt-get install redis-server
-  redis-server
-  echo -e "development:\n  cache_store: redis_store" > config/cache_store.yml
-  echo -e "development:\n  servers:\n  - redis://localhost" > config/redis.yml
-
-```
 
 ## 路径
 
-* 程序路径：/usr/lib/canvas/lib/canvas_server-*
-* 日志路径：/var/log/canvas  
+* 程序路径：/data/wwwroot/canvas
+* 日志路径：  
 * 配置文件路径：  
 * 其他...
 
@@ -185,6 +100,7 @@
 
 
 #### 安装后是否需要创建普通用户？
+
 需创建普通用户,还需将当前系统用户创建为postgresql superadmin 
 
 ### 日志

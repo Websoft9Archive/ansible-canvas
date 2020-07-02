@@ -2,8 +2,8 @@
 
 ## To do
 
-1. 可视化管理工具
-2. AmazonLinux支持
+1. Apache 用户 www-data 通用化处理
+2. CentOS 支持
 
 ## Logs
 
@@ -14,5 +14,4 @@
 
 ### Features
 
-* 2020-02-14  增加GUI工具
-* 2020-02-13  增加2.8版本
+* 2020-07-02  Modulate version created

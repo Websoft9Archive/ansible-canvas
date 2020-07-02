@@ -29,3 +29,16 @@ init_db:
     service_before: "apache.service"
     config_paths:
       - /data/wwwroot/canvas/config/database.yml
+
+init_application:
+  canvas:
+    username: "help@websoft9.com"
+    password: "123456"
+    service_before: "apache.service postgresql.service"
+    commands: 
+      - export RAILS_ENV=production
+      - export CANVAS_LMS_ADMIN_EMAIL=help@websoft9.com
+      - export CANVAS_LMS_ADMIN_PASSWORD=$new_password
+      - export CANVAS_LMS_ACCOUNT_NAME=admin
+      - export CANVAS_LMS_STATS_COLLECTION=opt_in
+      - cd /data/wwwroot/canvas; bundle exec rake db:initial_setup

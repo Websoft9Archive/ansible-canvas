@@ -1,11 +1,7 @@
 
-本模板的使用，请参考[模板说明](template.md)
-
---- 以下为项目的Readme部分 ---
-
 # Canvas 自动化安装与部署
 
-本项目是由 [Websoft9](https://www.websoft9.com) 研发的 [Canvas](https://canvas.io/) 自动化安装程序，开发语言是 Ansible。使用本项目，只需要用户在 Linux 上运行一条命令，即可自动化安装 Canvas，让原本复杂的安装过程变得没有任何技术门槛。  
+本项目是由 [Websoft9](https://www.websoft9.com) 研发的 [Canvas](https://github.com/instructure/canvas-lms/wiki/Production-Start) 自动化安装程序，开发语言是 Ansible。使用本项目，只需要用户在 Linux 上运行一条命令，即可自动化安装 Canvas，让原本复杂的安装过程变得没有任何技术门槛。  
 
 本项目是开源项目，采用 LGPL3.0 开源协议。
 
@@ -15,26 +11,26 @@
 
 | 条件       | 详情       | 备注  |
 | ------------ | ------------ | ----- |
-| 操作系统       | CentOS7.x, Ubuntu18.04, Amazon Linux2       |  可选  |
+| 操作系统       |  Ubuntu18.04 |  可选  |
 | 公有云| AWS, Azure, 阿里云, 华为云, 腾讯云 | 可选 |
 | 私有云|  KVM, VMware, VirtualBox, OpenStack | 可选 |
-| 服务器配置 | 最低1核1G，安装时所需的带宽不低于10M |  建议采用按量100M带宽 |
+| 服务器配置 | 最低2核8G，安装时所需的带宽不低于10M |  建议采用按量100M带宽 |
 
-更多请见 [官方 System requirement](https://www.canvas.com/download.html)
+更多请见 [官方 System requirement](https://github.com/instructure/canvas-lms/wiki/Production-Start#prerequisites)
 
 ## 组件
 
-包含的核心组件为：可选 Canvas2.8.24/3.0.7/3.2.13/4.0.14/5.0.7/stable 多个版本
+包含的核心组件为：Canvas,Ruby,Node.js,Apache,Passenger,PostgreSQL
 
 更多请见 [参数表](/docs/zh/stack-components.md)
 
 ## 本项目安装的是 Canvas 最新版吗？
 
-本项目通过[Canvas 官方仓库源](https://packagecloud.io/canvas/canvas-server/install)安装，每次安装均可保证为最新版本。
+本项目通过[Canvas 官方仓库源](https://github.com/instructure/canvas-lms)安装，每次安装均可保证为最新版本。
 
-版本号，请通过[官方下载](https://www.canvas.com/download.html)页面查看  
+版本号，请通过[Github tags](https://github.com/instructure/canvas-lms/tags)页面查看  
 
-我们会定期检查版本准确性，并测试此项目，以保证用户可以顺利安装所需的Canvas版本。  
+我们会定期检查版本准确性，并测试此项目，以保证用户可以顺利安装所需的 Canvas 版本。  
 
 ## 安装指南
 
