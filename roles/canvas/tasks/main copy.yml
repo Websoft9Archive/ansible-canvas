@@ -15,7 +15,7 @@
 - name: Rename dir name
   shell: cd /data/wwwroot; if [ ! -d "canvas" ]; then mv *instructure-canvas-lms* canvas; fi
 
-# Database configuration
+# Database create user and db
 - name: Create postgresql_user:canvas and Build postgresql_database:canvas_production
   shell: | 
     chown -R canvas:postgres /data/wwwroot/canvas
