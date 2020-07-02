@@ -96,6 +96,8 @@
     enabled: yes
     
 # Optimizing File Downloads
+# add line: config.action_dispatch.x_sendfile_header = 'X-Sendfile'
+
 - name: Set mod_xsendfile for optimizing file downloads
   copy:
     src:  production-local.rb
@@ -119,17 +121,20 @@
     chmod +x migrate.py
 
 # configure the canvas_init service
-- name: Copy canvas_init.service file
-  copy:
-    src: canvas_init.service
-    dest: '/lib/systemd/system/canvas_init.service'
+
 
 # Automated jobs
-- name: Start canvas_init
-  service:
-    name: canvas_init
-    state: restarted
-    enabled: yes
+block:
+  - name: Copy canvas_init.service file
+    copy:
+      src: canvas_init.service
+      dest: '/lib/systemd/system/canvas_init.service'
+
+  - name: Start and enable canvas_init.service
+    service:
+      name: canvas_init
+      state: restarted
+      enabled: yes
     
 - block:
   - name: Check Canvas Version
