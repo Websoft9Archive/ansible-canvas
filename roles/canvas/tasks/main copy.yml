@@ -59,6 +59,7 @@
   args:
     chdir: /data/wwwroot/canvas
     
+# Set database connection and import meta data    
 - name: Set database connection
   shell: | 
     sed -i '18,25s/password: your_password/password: {{canvas_postgresql_password}}/' /data/wwwroot/canvas/config/database.yml
@@ -96,8 +97,6 @@
     enabled: yes
     
 # Optimizing File Downloads
-# add line: config.action_dispatch.x_sendfile_header = 'X-Sendfile'
-
 - name: Set mod_xsendfile for optimizing file downloads
   copy:
     src:  production-local.rb
