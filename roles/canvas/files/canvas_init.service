@@ -1,9 +1,9 @@
 [Unit]
 Description=Canvas init
-After=apache.service
+After=network.target
 [Service]
 Type=simple
-ExecStart=/data/wwwroot/canvas/script/canvas_init start
-ExecStop=/data/wwwroot/canvas/script/canvas_init stop
+ExecStart=-/data/wwwroot/canvas/script/canvas_init start
+ExecStop=-/data/wwwroot/canvas/script/canvas_init stop
 [Install]
 WantedBy=multi-user.target
