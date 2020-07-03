@@ -1,10 +1,7 @@
 #全局
 region: "0"
 
-# canvas variable
-
 preend_certbot: True
-nginx_reverse_proxy_port: "3000"
 
 nodejs_version: "10"
 ruby_version: "2.4"
