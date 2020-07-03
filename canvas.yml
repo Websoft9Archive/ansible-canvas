@@ -14,6 +14,7 @@
     - {role: role_cloud, tags: "role_cloud"}
     - {role: role_postgresql, tags: "role_postgresql"}
     - {role: role_docker, tags: "role_docker"}
+    - {role: role_redis, tags: "role_redis"}
     - {role: role_ruby, tags: "role_ruby"}
     - {role: role_nodejs, tags: "role_nodejs"}
     - {role: role_apache, tags: "role_apache"}
