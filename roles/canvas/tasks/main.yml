@@ -4,9 +4,7 @@
     name: canvas
     comment: canvas
     password_lock: yes
-    
-adduser --disabled-password --gecos canvas canvas
-    
+       
 - name: rm -rf /data/wwwroot/canvas for second installation
   shell: rm -rf /data/wwwroot/canvas
   
