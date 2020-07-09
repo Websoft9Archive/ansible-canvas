@@ -5,7 +5,7 @@ If you have completed the Canvas deployment on Cloud Platform, the following ste
 ## Preparation
 
 1. Get the **Internet IP** on your Cloud Platform
-2. Check you **[Inbound of Security Group Rule](https://support.websoft9.com/docs/faq/tech-instance.html)** of Cloud Console to ensure the TCP:8161 is allowed
+2. Check you **[Inbound of Security Group Rule](https://support.websoft9.com/docs/faq/tech-instance.html)** of Cloud Console to ensure the **TCP:80** is allowed
 3. Make a domain resolution on your DNS Console if you want to use domain for Canvas
 
 ## Canvas Installation Wizard
