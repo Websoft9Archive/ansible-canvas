@@ -18,3 +18,20 @@
    </VirtualHost>
    ```
 4. 保存配置文件，重启 [Apache 服务](/zh/admin-services.md#apache)
+
+## 初始化 Canvas
+
+如果你忘记了管理员密码，又无法通过邮件找回密码，就只能初始化 Canvas。
+
+使用 SSH 连接服务器，运行下面的命令后就可以使用：help@websoft9.com/websoft9 登录。
+
+```
+export RAILS_ENV=production
+export CANVAS_LMS_ADMIN_EMAIL=help@websoft9.com
+export CANVAS_LMS_ADMIN_PASSWORD=websoft9
+export CANVAS_LMS_ACCOUNT_NAME=admin
+export CANVAS_LMS_STATS_COLLECTION=opt_in
+cd /data/wwwroot/canvas; bundle exec rake db:initial_setup
+```
+
+> 初始化可能会删除历史数据

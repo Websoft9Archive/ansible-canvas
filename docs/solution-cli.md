@@ -1,5 +1,5 @@
 # CLI
 
-Use `canvasctl` to manage Canvas  
+Canvas provide some useful scripts in the directory: `/data/wwwroot/canvas/script`  
 
-Use `erl` which is a Shell for develop and testing Erlang  
+Passenger cli: `passenger`  

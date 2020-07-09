@@ -10,21 +10,27 @@ If you have completed the Canvas deployment on Cloud Platform, the following ste
 
 ## Canvas Installation Wizard
 
-1. Using local Chrome or Firefox to visit the URL *http://DNS:15672* or *http://Internet IP:15672*, you will enter installation wizard of Canvas
-   ![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-login-websoft9.png)
+1. Using local Chrome or Firefox to visit the URL *http://DNS* or *http://Internet IP*, you can see login page
+   ![canvas login page](https://libs.websoft9.com/Websoft9/DocsPicture/en/canvas/canvas-login-websoft9.png)
 
-2. Log in to Canvas web console([Don't have password?](/stack-accounts.md#canvas))  
-   ![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-bk-websoft9.png)
+2. Log in to Canvas console([Don't have password?](/stack-accounts.md#canvas))  
+   ![canvas console](https://libs.websoft9.com/Websoft9/DocsPicture/en/canvas/canvas-console001-websoft9.png)
 
-3. Set you new password from: 【Users】>【Admin】>【Permissions】>【Update this user】
-   ![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-pw-websoft9.png)
+3. Open:【Admin】>【Settings】>【Account Settings】to set your language
+   ![canvas set language](https://libs.websoft9.com/Websoft9/DocsPicture/en/canvas/canvas-setlanguage-websoft9.png)
 
-> More useful Canvas guide, please refer to [Canvas Documentation](https://www.canvas.com/documentation.html)
+4. Open:【Account】>【Settings】>【Edit Settings】 to modify the default email and password
+   ![canvas edit setting](https://libs.websoft9.com/Websoft9/DocsPicture/en/canvas/canvas-setaccount001-websoft9.png)
+   ![canvas modify password](https://libs.websoft9.com/Websoft9/DocsPicture/en/canvas/canvas-setaccount002-websoft9.png)
+
+> More useful Canvas guide, please refer to [Canvas Guides](https://community.canvaslms.com/community/answers/guides)
 
 ## Q&A
 
 #### I can't visit the start page of Canvas?
 
-Your TCP:15672 of Security Group Rules is not allowed so there no response from Chrome or Firefox
+Your TCP:80 of Security Group Rules is not allowed so there no response from Chrome or Firefox
 
-#### Canvas service can't start? 
+#### Canvas very slowly?
+
+Canvas need very high configuration of Server, minimal: 2 vCPU and 8G memory

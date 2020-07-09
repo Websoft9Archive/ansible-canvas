@@ -2,32 +2,48 @@
 
 使用由Websoft9提供的 Canvas 部署方案，可能需要用到的服务如下：
 
-### Canvas
+### Canvas 主程序
+
+通过 Apache 服务启停来管理 Canvas
 
 ```shell
-sudo systemctl start canvas-server
-sudo systemctl stop canvas-server
-sudo systemctl restart canvas-server
-sudo systemctl status canvas-server
-
-# you can use this debug mode if Canvas service can't run
-canvas-server console
+sudo systemctl start apache
+sudo systemctl stop apache
+sudo systemctl restart apache
+sudo systemctl status apache
 ```
 
-### MySQL
+### Canvas Job
 
 ```shell
-sudo systemctl start mysql
-sudo systemctl stop mysql
-sudo systemctl restart mysql
-sudo systemctl status mysql
+sudo systemctl start canvas-init
+sudo systemctl stop canvas-init
+sudo systemctl restart canvas-init
+sudo systemctl status canvas-init
+```
+
+### PostgreSQL
+
+```shell
+sudo systemctl start postgresql
+sudo systemctl stop postgresql
+sudo systemctl restart postgresql
+sudo systemctl status postgresql
 ```
 
 ### Redis
 
 ```shell
-systemctl start redis
-systemctl stop redis
-systemctl restart redis
-systemctl status redis
+sudo systemctl start redis
+sudo systemctl stop redis
+sudo systemctl restart redis
+sudo systemctl status redis
+```
+
+### Passenger
+
+```
+sudo passenger start
+sudo passenger stop
+sudo passenger status
 ```

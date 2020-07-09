@@ -35,8 +35,8 @@ sudo certbot
       SSLEngine on
       BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
       # the following ssl certificate files are generated for you from the ssl-cert package.
-      SSLCertificateFile /etc/ssl/certs/ssl-cert-snakeoil.pem
-      SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
+      SSLCertificateFile /data/cert/ssl-cert-snakeoil.pem
+      SSLCertificateKeyFile /data/cert/ssl-cert-snakeoil.key
       SetEnv RAILS_ENV production
       <Directory /data/wwwroot/canvas/public>
         Allow from all

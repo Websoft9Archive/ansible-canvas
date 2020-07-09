@@ -15,9 +15,27 @@ Follow is the sample using **SendGrid's SMTP Service** to configure sending mail
    SMTP username: websoft9smpt
    SMTP password: #fdfwwBJ8f    
    ```
-2. Log in Canvas Console
-3. Enter the SMTP settings
-![Metabase SMTP](https://libs.websoft9.com/Websoft9/DocsPicture/en/metabase/metabase-smtp-websoft9.png)
-4. Click the **Test Connection**, you can get the feedback *"no errors were..."* if SMTP is useful
+2. Use SFTP or SSH to modify the email configuration file on your Server: */data/wwwroot/canvas/config/outgoing_mail.yml*
+   ```
+   production:
+   address: smtp.sendgrid.net
+   port: 465
+   user_name: websoft9smpt
+   password: #fdfwwBJ8f    
+   authentication: plain        # plain, login, or cram_md5
+   domain: smtp.sendgrid.net
+   outgoing_address: sendgrid.net
+   default_name: Instructure Canvas
+   ```
+   >  If you can't receive email, try to modify the item `authentication: plain` to `authentication: login` 
+
+3. Complete the Canvas [Domain name configuration](/solution-more.md) and make sure it's successful
+
+   > Domain is very important, if you don't configure Domain for Canvas, the links can't be opened in the email send to user. If you don't configure SSL for canvas, there may have security reminder when you click the links
+
+4. Restart Apache service
+   ```
+   systemctl restart apache
+   ```
 
 More SMTP Service(Gmail, Hotmail, QQ mail, Yahoo mail, SendGrid and so on)  settings or Issues with SMTP, please refer to Websoft9's *[SMTP Guide](https://support.websoft9.com/docs/faq/tech-smtp.html)*

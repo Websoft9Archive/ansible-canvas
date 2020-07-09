@@ -6,7 +6,10 @@
 
 #### 如何查看错误日志？
 
-日志文件路径为：`/data/logs`。检索关键词 **Failed** 或者 **error** 查看错误
+通过如下两种日志检索关键词 **Failed** 或者 **error** 查看错误
+
+* Canvas 日志：`/data/wwwroot/canvas/log/production.log`
+* Apache 日志：`/data/logs/apache`
 
 #### Canvas服务无法启动？
 
@@ -21,13 +24,10 @@ df -lh
 free -lh
 
 # 查看服务状态和日志
-systemctl status canvas
-journalctl -u canvas
+systemctl status apache
+journalctl -u apache
 ```
 
-#### 在Chrome下修改密码后报错？
+#### 403 访问权限错误？
 
-这个并不是服务器端的问题，只要更新浏览器即可。
-
-![chrome error of Canvas](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-chromeerror-websoft9.png)
-
+需要确保 Canvas 根目录具有 canvas 和 www-data 两个用户的权限

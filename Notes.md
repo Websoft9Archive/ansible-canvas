@@ -23,14 +23,18 @@ Canvas 是一个开源LMS系统。
 
 ## 安装说明
 
-下面基于不同的安装平台，分别进行安装说明。
+Canvas 的安装难点集中在如下几个方面：
 
-
+* 依赖 Apache HTTP Server 和 Passenger 应用服务器
+* 安装的时候需要最少两个 PostgreSQL 用户，一个是 *canvas*， 另外一个是当前操作系统用户，例如 *root*
+* 初始化 `bundle exec rake db:initial_setup` 依赖于环境变量
+* production and development 版本安装方式不同，前者更为复杂
+* 后台的密码随机化只能通过初始化去实现
 
 ## 路径
 
-* 程序路径：/data/wwwroot/canvas
-* 日志路径：  
+* 程序路径：*/data/wwwroot/canvas*
+* 日志路径： */data/wwwroot/canvas/logs*
 * 配置文件路径：  
 * 其他...
 
@@ -38,31 +42,21 @@ Canvas 是一个开源LMS系统。
 
 ### 数据库密码
 
-如果有数据库
-
-* 数据库安装方式：包管理工具自带 or 自行安装
-* 账号密码：
+* 数据库安装方式：自行安装
+* 账号密码： canvas/随机密码
 
 ### 后台账号
 
 如果有后台账号
 
-* 登录地址
-* 账号密码
-* 密码修改方案：最好是有命令行修改密码的方案
+* 登录地址：公网IP
+* 账号密码：help@websoft9.com
+* 密码修改方案： 通过 bundle exec rake db:initial_setup 实现
 
 
 ## 服务
 
-本项目安装后：无服务
-
-备注：如果开机没有服务，程序无法运行的情况下，需要自行编写服务后存放到项目中
-
-服务的模板如下：
-
-```
-
-```
+除了公共role之外，本程序提供额外的服务：canvas_init
 
 ## 环境变量
 
@@ -72,36 +66,27 @@ Canvas 是一个开源LMS系统。
 
 ## 版本号
 
-通过如下的命令获取主要组件的版本号: 
-
-```
-# Check Canvas version
-
-```
+暂时没有找到 Canvas 版本号获取的方案
 
 ## 常见问题
 
 #### 有没有管理控制台？
 
-通过*http:// 公网 IP:3000*访问管理控制台
-配置apche后可通过ip直接访问 
+配置 Apache 后可通过 IP 直接访问 
 
 #### 本项目需要开启哪些端口？
 
 | item      | port  |
 | --------- | ----- |
-|  apache2  |   80  |
-|docker-proxy| 9090 |
-| apache2   |  443  |
-| postgres  |  5432 |
+| HTTP |   80  |
+| phpPgadmin| 9090 |
+| HTTPS   |  443  |
 
 #### 有没有CLI工具？
-无
 
+/data/wwwroot/canvas/script 下有一些可用的脚本
 
 #### 安装后是否需要创建普通用户？
 
-需创建普通用户,还需将当前系统用户创建为postgresql superadmin 
-
-### 日志
+Linux需创建普通用户 canvas，还需他设置为 PostgreSQL 的 superadmin 
 

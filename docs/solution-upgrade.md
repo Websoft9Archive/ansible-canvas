@@ -26,4 +26,4 @@ yum update -y --skip-broken
 
 ## Canvas Upgrade
 
-Refer to the official docs: [Upgrading Canvas](https://www.canvas.com/upgrade.html)
+Refer to the official docs: [Upgrading Canvas](https://github.com/instructure/canvas-lms/wiki/Upgrading)

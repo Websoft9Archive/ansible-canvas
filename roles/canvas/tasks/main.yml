@@ -127,11 +127,11 @@
   - name: Copy canvas_init.service file
     copy:
       src: canvas_init.service
-      dest: '/lib/systemd/system/canvas_init.service'
+      dest: '/lib/systemd/system/canvas-init.service'
 
-  - name: Start and enable canvas_init.service
+  - name: Start and enable canvas-init.service
     service:
-      name: canvas_init
+      name: canvas-init
       state: restarted
       enabled: yes
 

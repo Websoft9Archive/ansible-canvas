@@ -1,6 +1,6 @@
 # Username and Password
 
-You use the **SSH** to connect your Server and run the command `cat /credentials/password.txt` to get the username and password of this deployment solution.
+You use the **SSH** to connect your Server and run the command `sudo cat /credentials/password.txt` to get the username and password of this deployment solution.
 
 ![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/common/catdbpassword-websoft9.png)
 
@@ -8,15 +8,12 @@ These accounts are required for Canvas image installation and configuration
 
 ## Canvas
 
-* Canvas administrator username: `admin`
-* Canvas administrator password: stored in the file of your server */credentials/password.txt*
-  > If there no password.txt exist, the administrator password is `admin`
+Canvas **username and password** stored in the file ***/credentials/password.txt*** on your server   
 
-## MySQL
+## PostgreSQL
 
-* MySQL administrator username: `root`
-* MySQL administrator password: stored in the file of your server */credentials/password.txt*  
-  ![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/common/catdbpassword-websoft9.png)
+* PostgreSQL administrator username: `postgres`
+* PostgreSQL administrator password: stored in the file ***/credentials/password.txt*** on your server   
 
 ## Linux
 
@@ -28,6 +25,7 @@ These accounts are required for Canvas image installation and configuration
    | --- | --- | --- |
    |  Azure   |  It was set by yourself when created instance   | [How to enable root access?](https://support.websoft9.com/docs/azure/server-login.html#sample2-enable-the-root-username) |
    |  AWS CentOS   |  centos   | [How to enable root access?](https://support.websoft9.com/docs/aws/server-login.html#sample2-enable-the-root-username) |
+   |  AWS AmazonLinux   |  ec2-user   | [How to enable root access?](https://support.websoft9.com/docs/aws/server-login.html#sample2-enable-the-root-username) |
    |  AWS Ubuntu   |  ubuntu   | [How to enable root access?](https://support.websoft9.com/docs/aws/server-login.html#sample2-enable-the-root-username) |
    |  Alibaba Cloud, HUAWEI CLOUD, Tencent Cloud |  root   |
 

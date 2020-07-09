@@ -4,31 +4,48 @@ Jenkins deployment package has installed the SSL module of Nginx and open Certif
 
 > In addition to the vhost configuration file, HTTPS settings do not need to modify any files in Nginx
 
-## Simple Steps
+## Quick start
 
-If you want to use a free certificate, just run the one command `certbot` on your instance to start the HTTPS deployment.
+### Automatic deployment
+
+If you want to use a free certificate, just run the one command `sudo certbot` on your instance to start the HTTPS deployment.
 
 ```
 sudo certbot
 ```
 
+### Manual deployment
+
 If you have applied for a commercial certificate, complete the HTTPS configuration in just three steps:
 
 1. Upload your certificate to the directory of your instance: */data/cert* 
-2. Edit the vhost configuration file: */etc/nginx/conf.d/default.conf* 
+2. Edit the vhost configuration file: */etc/httpd/conf.d/vhost.conf* 
 3. Insert the **HTTPS template** into *server{  }* and modify to your certificate path
    ``` text
    #-----HTTPS template start------------
-   listen 443 ssl; 
-   ssl_certificate /data/cert/xxx.crt;
-   ssl_certificate_key /data/cert/xxx.key;
-   ssl_session_timeout 5m;
-   ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-   ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
-   ssl_prefer_server_ciphers on;
+   <VirtualHost *:443>
+     ServerName canvas.example.com
+     #ServerAlias canvasfiles.example.com
+     #ServerAdmin youremail@example.com
+     DocumentRoot /data/wwwroot/canvas/public
+     ErrorLog /var/log/apache2/canvas_errors.log
+     LogLevel warn
+     CustomLog /var/log/apache2/canvas_ssl_access.log combined
+     SSLEngine on
+     BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
+     # the following ssl certificate files are generated for you from the ssl-cert package.
+     SSLCertificateFile /data/cert/ssl-cert-snakeoil.pem
+     SSLCertificateKeyFile /data/cert/ssl-cert-snakeoil.key
+     SetEnv RAILS_ENV production
+     <Directory /data/wwwroot/canvas/public>
+       Allow from all
+       Options -MultiViews
+     </Directory>
+   </VirtualHost>
    #-----HTTPS template end------------
    ```
-4. Save file and [Restart Nginx service](/admin-services.md)
+   
+4. Save file and [Restart Apache service](/admin-services.md)
 
 ## Special Guide
 

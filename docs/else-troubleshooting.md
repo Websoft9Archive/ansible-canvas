@@ -6,7 +6,10 @@ We collect the most common troubleshooting of using Canvas for your reference:
 
 #### How can I use the logs?
 
-You can find the keywords **Failed** or **error** from the logs directory: `/data/logs`
+You can find the keywords **Failed** or **error** from the these logs
+
+* Canvas log: */data/wwwroot/canvas/log/production.log*
+* Apache log: */data/logs/apache*
 
 #### Canvas service can't start?
 
@@ -16,8 +19,8 @@ It is recommended to first check through the command.
 
 ```shell
 # restart Canvas service
-systemctl status canvas
-journalctl -u canvas
+systemctl status apache
+journalctl -u apache
 
 # view disk space
 df -lh
@@ -26,8 +29,6 @@ df -lh
 free -lh
 ```
 
-#### Error in Chrome when modify password?
+#### 403 error?
 
-This error is not attribute to Canvas server, once you have upgraded you local Chrome, it solved
-
-![chrome error of Canvas](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-chromeerror-websoft9.png)
+You should make sure user **canvas** and **www-data** haver permission of DIR */data/wwwroot/canvas*

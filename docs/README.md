@@ -6,9 +6,9 @@ home: false
 
 This documentation is provided by [Websoft9](https://www.websoft9.com/), it can help users to acquire skills of Canvas Deployment, Installation, Configuration, HTTPS, SMTP, Backup, Upgrade, Connect Instance and more.
 
-[Canvas](https://canvas-server.apache.org/) is the most widely deployed open source message broker. With more than 35,000 production deployments of Canvas world-wide at small startups and large enterprises, Canvas is the most popular open source message broker.
+[Canvas](https://canvas-server.apache.org/) is the World's Fastest-Growing Learning Management Platform. Canvas streamlines all the digital tools and content that teachers and students love, for a simpler and more connected learning experience.
 
-![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-gui-websoft9.png)
+![](https://libs.websoft9.com/Websoft9/DocsPicture/en/canvas-gui-websoft9.png)
 
 ---
 
