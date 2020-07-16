@@ -1,5 +1,7 @@
 region: "0"
 
+common_os_support: ["Ubuntu"]
+
 apache_certbot: True
 
 nodejs_version: "10"
