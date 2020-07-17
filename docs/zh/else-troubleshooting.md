@@ -31,3 +31,8 @@ journalctl -u apache
 #### 403 访问权限错误？
 
 需要确保 Canvas 根目录具有 canvas 和 www-data 两个用户的权限
+
+
+### 文件上传，不能下载
+文件上传后，下载出现“无法访问网站 找不到canvas.example.com服务器IP地址 ”
+解决办法：找到apache配置文件/etc/apache2/conf.d/vhost.conf，将默认的ServerName canvas.example.com更改为 ServerName 实际部署站点域名
