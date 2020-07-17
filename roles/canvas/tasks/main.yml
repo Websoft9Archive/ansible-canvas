@@ -25,8 +25,8 @@
     sudo -u postgres createuser canvas --no-createdb --no-superuser --no-createrole
     echo "ALTER USER canvas WITH PASSWORD '{{canvas_postgresql_password}}';\q" | sudo -u postgres psql
     sudo -u postgres createdb canvas_production --owner=canvas
-    sudo -u postgres createuser $USER
-    sudo -u postgres psql -c "alter user $USER with superuser" postgres
+    sudo -u postgres createuser $(whoamin)
+    sudo -u postgres psql -c "alter user $(whoamin) with superuser" postgres
 
 # Install dependencies by OS_family
 - name: Install this role on {{ansible_os_family}}
