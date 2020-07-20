@@ -18,9 +18,6 @@
 - name: Rename dir name
   shell: cd /data/wwwroot; if [ ! -d "canvas" ]; then mv *instructure-canvas-lms* canvas; fi
   
-- name: remove postgresql_user for second installation
-  shell: sudo -u postgres psql -c "DROP USER "$USER";"
-  
 # Database create user and db
 - name: Create postgresql_user:canvas and Build postgresql_database:canvas_production
   shell: | 
