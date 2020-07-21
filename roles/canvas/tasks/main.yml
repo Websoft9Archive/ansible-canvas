@@ -27,8 +27,8 @@
     sudo -u postgres createdb canvas_production --owner=canvas
     
 - name: Create system users as postgresql users
-  shell: |
   remote_user: connection=local 
+  shell: |
     sudo -u postgres createuser $USER
     sudo -u postgres psql -c "alter user $USER with superuser" postgres
 
