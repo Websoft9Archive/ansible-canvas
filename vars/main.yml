@@ -39,6 +39,6 @@ init_application:
       - echo "export CANVAS_LMS_ADMIN_EMAIL=help@websoft9.com" >>/etc/profile
       - echo "export CANVAS_LMS_ADMIN_PASSWORD=$new_password" >>/etc/profile
       - echo "export CANVAS_LMS_ACCOUNT_NAME=admin" >>/etc/profile
-      - cho "export CANVAS_LMS_STATS_COLLECTION=opt_in" >>/etc/profile
+      - echo "export CANVAS_LMS_STATS_COLLECTION=opt_in" >>/etc/profile
       - cd /data/wwwroot/canvas; 
       - source /etc/profile && bundle exec rake db:initial_setup executable=/bin/bash
