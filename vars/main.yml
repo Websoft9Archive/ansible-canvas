@@ -40,4 +40,5 @@ init_application:
       - export CANVAS_LMS_ADMIN_PASSWORD=$new_password
       - export CANVAS_LMS_ACCOUNT_NAME=admin
       - export CANVAS_LMS_STATS_COLLECTION=opt_in
-      - cd /data/wwwroot/canvas; bundle exec rake db:initial_setup
+      - cd /data/wwwroot/canvas; 
+      - source /etc/profile && bundle exec rake db:initial_setup executable=/bin/bash
