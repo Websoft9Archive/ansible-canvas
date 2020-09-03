@@ -33,7 +33,7 @@ init_application:
     username: "help@websoft9.com"
     password: "123456"
     service_before: "apache.service"
-    service_after: "TEST_postgresql.service"
+    service_after: "postgresql.service"
     commands: 
       - echo "export RAILS_ENV=production" >>/etc/profile
       - echo "export CANVAS_LMS_ADMIN_EMAIL=help@websoft9.com" >>/etc/profile
