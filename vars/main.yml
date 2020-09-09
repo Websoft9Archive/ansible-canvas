@@ -35,10 +35,9 @@ init_application:
     service_before: "apache.service"
     service_after: "postgresql.service"
     commands: 
-      - echo "export RAILS_ENV=production" >>/etc/profile
-      - echo "export CANVAS_LMS_ADMIN_EMAIL=help@websoft9.com" >>/etc/profile
-      - echo "export CANVAS_LMS_ADMIN_PASSWORD=$new_password" >>/etc/profile
-      - echo "export CANVAS_LMS_ACCOUNT_NAME=admin" >>/etc/profile
-      - echo "export CANVAS_LMS_STATS_COLLECTION=opt_in" >>/etc/profile
-      - cd /data/wwwroot/canvas; 
-      - source /etc/profile && bundle exec rake db:initial_setup executable=/bin/bash
+      - export RAILS_ENV=production
+      - export CANVAS_LMS_ADMIN_EMAIL=help@websoft9.com
+      - export CANVAS_LMS_ADMIN_PASSWORD=$new_password
+      - export CANVAS_LMS_ACCOUNT_NAME=admin
+      - export CANVAS_LMS_STATS_COLLECTION=opt_in
+	    - cd /data/wwwroot/canvas; bundle exec rake db:initial_setup
