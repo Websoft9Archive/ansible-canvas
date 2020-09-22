@@ -36,10 +36,5 @@ init_application:
     password: "123456"
     service_before: "apache.service"
     service_after: "postgresql.service"
-    commands: 
-      - export RAILS_ENV=production
-      - export CANVAS_LMS_ADMIN_EMAIL=help@websoft9.com
-      - export CANVAS_LMS_ADMIN_PASSWORD=$new_password
-      - export CANVAS_LMS_ACCOUNT_NAME=admin
-      - export CANVAS_LMS_STATS_COLLECTION=opt_in
-      - cd /data/wwwroot/canvas; bundle exec rake db:initial_setup
+    commands:
+      - cd /data/wwwroot/canvas;RAILS_ENV=production bundle exec rake db:initial_setup
