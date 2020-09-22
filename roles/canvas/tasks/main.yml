@@ -98,7 +98,7 @@
     dest: /etc/httpd/conf.d/vhost.conf
 
 # Canvas ENV Configure
-- block: Canvas ENV Configure
+- block:
   - name: Copy local_env file
     copy:
       src: local_env.yml
