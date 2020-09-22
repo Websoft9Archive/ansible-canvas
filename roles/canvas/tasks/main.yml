@@ -97,6 +97,31 @@
     src:  canvas.conf
     dest: /etc/httpd/conf.d/vhost.conf
 
+# Canvas ENV Configure
+- block: Canvas ENV Configure
+  - name: Copy local_env file
+    copy:
+      src: local_env.yml
+      dest: '/data/wwwroot/canvas/config/local_env.yml'
+      
+  - name: Set config/local_env.yml into .gitignore
+    blockinfile:
+      path: /data/wwwroot/canvas/.gitignore
+      block: |
+        /config/local_env.yml
+
+  - name: Add local_env.yml into application.rb
+    blockinfile:
+      path: /data/wwwroot/canvas/config/application.rb
+      insertafter: "ActiveSupport.to_time_preserves_timezone = true"
+      block: |
+        config.before_configuration do
+          env_file = File.join(Rails.root, 'config', 'local_env.yml')
+          YAML.load(File.open(env_file)).each do |key, value|
+          ENV[key.to_s] = value
+          end if File.exists?(env_file)
+        end
+
 - name: Restart Apache
   service:
     name: apache
