@@ -20,6 +20,6 @@
     - {role: role_apache, tags: "role_apache"}
     - {role: role_passenger, tags: "role_passenger"}
     - {role: canvas, tags: "canvas"}
-    - {role: role_init, tags: "role_init"}
+#    - {role: role_init, tags: "role_init"}
     - {role: role_preend, tags: "role_preend"}
     - {role: role_end, tags: "role_end"}
