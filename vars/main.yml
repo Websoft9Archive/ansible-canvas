@@ -36,5 +36,7 @@ init_application:
     password: "123456"
     service_before: "apache.service"
     service_after: "postgresql.service"
+    config_paths:
+      - /data/wwwroot/canvas/config/local_env.yml
     commands:
       - cd /data/wwwroot/canvas;RAILS_ENV=production bundle exec rake db:initial_setup
