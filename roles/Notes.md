@@ -7,7 +7,7 @@ Canvas 是一个开源LMS系统。
 
 ### 注意点
 
-1.依赖 Apache HTTP Server 和 Passenger 应用服务器
+1. 依赖 Apache HTTP Server 和 Passenger 应用服务器
 
 2. 安装的时候需要最少两个 PostgreSQL 用户，一个是 *canvas*， 另外一个是当前操作系统用户，例如 *root*
 
