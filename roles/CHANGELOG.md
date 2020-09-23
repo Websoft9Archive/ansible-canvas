@@ -2,6 +2,7 @@
 
 ## To do
 1. document update 
+2. canvas in centos os 
 
 ## Logs
 
