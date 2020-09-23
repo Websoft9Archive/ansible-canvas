@@ -1,7 +1,9 @@
-# Canvas Notes
+# CHANGELOG
 
-##
-canvas
+## To do
+1. document update 
+
+## Logs
 
 ### Bug Fixes
 * 2020-07-24  canvas can not edit env vars in the init service
