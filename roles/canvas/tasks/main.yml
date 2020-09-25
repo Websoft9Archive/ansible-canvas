@@ -96,12 +96,6 @@
           end if File.exists?(env_file)
         end
         
-- name: postgresql initialization & Set login_email, login_password,user
-  shell: |
-    RAILS_ENV=production bundle exec rake db:initial_setup
-  args:
-    chdir: /data/wwwroot/canvas
-
 # Canvas ownership
 - name: Set Canvas ownership and Set
   shell: |
@@ -110,7 +104,13 @@
     setfacl -m u:www-data:rx -R /data/wwwroot/canvas
   args:
     chdir: /data/wwwroot/canvas
-
+    
+- name: postgresql initialization & Set login_email, login_password,user
+  shell: |
+    RAILS_ENV=production bundle exec rake db:initial_setup
+  args:
+    chdir: /data/wwwroot/canvas
+    
 # Apache Configure
 - name: Copy VirtualHosts file with owner and permissions
   copy:
