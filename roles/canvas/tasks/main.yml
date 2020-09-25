@@ -77,6 +77,9 @@
     copy:
       src: local_env.yml
       dest: /data/wwwroot/canvas/config/local_env.yml
+    owner: canvas
+    group: canvas
+    mode: '0640'
       
   - name: Set config/local_env.yml into .gitignore
     blockinfile:
