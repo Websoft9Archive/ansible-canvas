@@ -98,7 +98,12 @@
         
 - name: postgresql initialization & Set login_email, login_password,user
   shell: |
-    RAILS_ENV=production bundle exec rake db:initial_setup
+    export RAILS_ENV=production
+    export CANVAS_LMS_ADMIN_EMAIL={{canvas_admin_email}}
+    export CANVAS_LMS_ADMIN_PASSWORD={{canvas_password}}
+    export CANVAS_LMS_ACCOUNT_NAME={{canvas_accout_name}}
+    export CANVAS_LMS_STATS_COLLECTION={{cnavas_stats_collection}}
+    bundle exec rake db:initial_setup
   args:
     chdir: /data/wwwroot/canvas
 
