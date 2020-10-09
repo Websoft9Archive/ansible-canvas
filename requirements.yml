@@ -1,35 +1,23 @@
 - src: http://github.com/websoft9dev/role_common
-  version: master
 
 - src: http://github.com/websoft9dev/role_cloud
-  version: master
 
 - src: http://github.com/websoft9dev/role_ruby
-  version: master
   
 - src: http://github.com/websoft9dev/role_redis
-  version: master
 
 - src: http://github.com/websoft9dev/role_apache
-  version: master
 
 - src: http://github.com/websoft9dev/role_passenger
-  version: master
   
 - src: http://github.com/websoft9dev/role_nodejs
-  version: master
 
 - src: http://github.com/websoft9dev/role_docker
-  version: master
   
 - src: http://github.com/websoft9dev/role_postgresql
-  version: master
 
 - src: http://github.com/websoft9dev/role_init
-  version: master
   
 - src: http://github.com/websoft9dev/role_preend
-  version: master
 
 - src: http://github.com/websoft9dev/role_end
-  version: master
