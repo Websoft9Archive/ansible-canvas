@@ -38,4 +38,6 @@
    systemctl restart apache
    ```
 
+> 很多用户反馈，Canvas部署在中国大陆之外（比如香港）区域，方可成功发出邮件。原因未知。
+
 更多邮箱设置（QQ邮箱，阿里云邮箱，Gmail，Hotmail等）以及无法发送邮件等故障之诊断，请参考由Websoft9提供的 [SMTP 专题指南](https://support.websoft9.com/docs/faq/zh/tech-smtp.html)

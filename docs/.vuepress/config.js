@@ -6,7 +6,7 @@ base: '/docs/canvas/',
 dest: 'html/canvas',
 
 head: [
-  ['link', { rel: 'icon', href: '/favcon.ico' }]
+  ['link', { rel: 'icon', href: '/favicon.ico' }]
 ],
 
 //vuepress多语言，区别于主题多语言

@@ -23,6 +23,10 @@
    ![canvas 修改账号](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-setaccount001-websoft9.png)
    ![canvas 修改密码](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-setaccount002-websoft9.png)
 
+## Canvas 入门向导
+
+编写中... (欢迎您投稿)
+
 > 需要了解更多 Canvas 的使用，请参考官方文档：[Canvas Guides](https://community.canvaslms.com/community/answers/guides)
 
 ## 常见问题

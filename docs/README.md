@@ -8,7 +8,7 @@ This documentation is provided by [Websoft9](https://www.websoft9.com/), it can 
 
 [Canvas](https://canvas-server.apache.org/) is the World's Fastest-Growing Learning Management Platform. Canvas streamlines all the digital tools and content that teachers and students love, for a simpler and more connected learning experience.
 
-![](https://libs.websoft9.com/Websoft9/DocsPicture/en/canvas-gui-websoft9.png)
+![](https://libs.websoft9.com/Websoft9/DocsPicture/en/canvas/canvas-gui-websoft9.png)
 
 ---
 
