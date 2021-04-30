@@ -24,7 +24,7 @@
    ![canvas 修改密码](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-setaccount002-websoft9.png)
 
 5. 开放注册：【管理员】>【身份验证设置】>【提供者】开放教师和学生注册 
-   ![canvas 开放注册](https://libs.websoft9.com/Websoft9/blog/tmp/canvas-register.png)
+   ![canvas 开放注册](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-register-websoft9.png)
 
 ## Canvas 入门向导
 
