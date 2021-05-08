@@ -35,4 +35,6 @@ journalctl -u apache
 
 ### 文件上传，不能下载
 文件上传后，下载出现“无法访问网站 找不到canvas.example.com服务器IP地址 ”
-解决办法：找到apache配置文件/etc/apache2/conf.d/vhost.conf，将默认的ServerName canvas.example.com更改为 ServerName 实际部署站点域名
+解决办法：
+1. 找到apache配置文件/etc/apache2/conf.d/vhost.conf，将默认的ServerName canvas.example.com更改为 ServerName 实际部署站点域名
+2. 找到域名配置文件/data/wwwroot/canvas/config/domain.yml，将 production 配置节点的 **domain** 项的值修改为你的域名
