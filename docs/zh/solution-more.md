@@ -17,7 +17,8 @@
    ...
    </VirtualHost>
    ```
-4. 保存配置文件，重启 [Apache 服务](/zh/admin-services.md#apache)
+4. 修改域名配置文件：将/data/wwwroot/canvas/config/domain.yml 文件 production 配置节点的 **domain** 项的值修改为你的域名
+5. 保存配置文件，重启 [Apache 服务](/zh/admin-services.md#apache)
 
 ## 初始化 Canvas
 
