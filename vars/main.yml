@@ -17,7 +17,7 @@ postgresql_version: "9.5"
 postgresql_password: "123456"
 
 docker_applications: 
-  - phppgadmin
+  - pgadmin
 
 postgresql_remote: True
 
@@ -29,7 +29,16 @@ init_db:
     service_before: "apache.service"
     config_paths:
       - /data/wwwroot/canvas/config/database.yml
-
+      
+init_docker:
+  pgadmin:
+    admin_username: user@domain.com
+    admin_password: "SuperSecret"
+    service_after: "docker.service"
+    compose_path: "/data/apps/pgadmin/docker-compose.yml"
+    compose_commands:
+      - sudo sed -i "s/SuperSecret/$new_password/g" /data/apps/pgadmin/docker-compose.yml
+      
 init_application:
   canvas:
     username: "help@websoft9.com"
