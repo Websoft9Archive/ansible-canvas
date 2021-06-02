@@ -6,7 +6,7 @@ apache_certbot: True
 apache_appname: "canvas"
 apache_vhost_mode: "www"
 
-nodejs_version: "10"
+nodejs_version: "14"
 ruby_version: "2.6"
 
 redis_version: "5.0"
