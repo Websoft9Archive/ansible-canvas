@@ -63,9 +63,14 @@
   args:
     chdir: /data/wwwroot/canvas
 
-- name: Yarn install packages and create canvas assets 
+- name: Yarn install packages
   shell: |
     yarn install
+  args:
+    chdir: /data/wwwroot/canvas
+    
+- name: Create canvas assets 
+  shell: |
     RAILS_ENV=production bundle exec rake canvas:compile_assets
     chown -R canvas public/dist/brandable_css 
   args:
