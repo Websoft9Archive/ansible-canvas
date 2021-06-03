@@ -39,7 +39,6 @@
 # Install Canvas
 - name: Install Canvas dependencies and rename configuration file
   shell: |
-    gem install bundler --version {{ruby_bundle_version}}
     bundle install --without pulsar --path vendor/bundle
     for config in amazon_s3 database \
     delayed_jobs domain file_store outgoing_mail security external_migration; \
