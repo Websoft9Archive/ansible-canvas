@@ -8,7 +8,7 @@ apache_vhost_mode: "www"
 
 nodejs_version: "14"
 ruby_version: "2.6"
-ruby_bundle_version: "2.2.15"
+ruby_bundle_version: "2.2.17"
 
 redis_version: "5.0"
 
