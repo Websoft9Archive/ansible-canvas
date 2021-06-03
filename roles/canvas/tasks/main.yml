@@ -36,9 +36,14 @@
 - name: Install this role on {{ansible_os_family}}
   include: "{{ansible_os_family}}.yml"
 
-- name: Install bundle and dependencies ruby packages
+- name: Install version {{ruby_bundle_version}} of bundler
+  community.general.gem:
+    name: bundler
+    version: {{ruby_bundle_version}}
+    state: present
+    
+- name: Install ruby packages
   shell: |
-    gem install bundler --version {{ruby_bundle_version}}
     bundle install --without pulsar --path vendor/bundle 
   args:
     chdir: /data/wwwroot/canvas
