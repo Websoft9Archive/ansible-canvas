@@ -38,7 +38,6 @@
   
 - name: Install bundle and ruby packages
   shell: |
-    gem install bundler --version {{ ruby_bundle_version }}
     bundle install --without pulsar --path vendor/bundle 
   args:
     chdir: /data/wwwroot/canvas
