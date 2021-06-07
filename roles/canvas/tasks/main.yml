@@ -32,6 +32,36 @@
     sudo -u postgres createuser $USER
     sudo -u postgres psql -c "alter user $USER with superuser" postgres
 
+- name: test version
+  shell: |
+    ruby -v >> test.txt
+    bundle -v >> test.txt
+  args:
+    chdir: /data/wwwroot/canvas
+    
+- name: Get ruby version
+  shell: ls /usr/local/rvm/rubies |grep ruby
+  register: ruby_dir_name
+
+- name: Get ruby clis
+  shell: ls /usr/local/rvm/rubies/{{ruby_dir_name.stdout}}/bin
+  register: ruby_clis
+
+- name: Create link
+  file:
+    src: '/usr/local/rvm/rubies/{{ruby_dir_name.stdout}}/bin/{{item}}'
+    dest: '/usr/bin/{{item}}'
+    state: link
+    force: yes
+  with_items: "{{ruby_clis.stdout_lines |list}}"
+
+- name: test version2
+  shell: |
+    ruby -v >> test.txt
+    bundle -v >> test.txt
+  args:
+    chdir: /data/wwwroot/canvas
+    
 # Install dependencies by OS_family
 - name: Install this role on {{ansible_os_family}}
   include: "{{ansible_os_family}}.yml"
