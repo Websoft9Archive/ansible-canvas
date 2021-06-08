@@ -12,7 +12,7 @@ ruby_bundle_version: "2.2.17"
 
 redis_version: "5.0"
 
-passenger_integration: standalone
+passenger_integration: apache
 
 postgresql_version: "9.5"
 postgresql_password: "123456"
