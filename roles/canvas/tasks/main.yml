@@ -120,7 +120,7 @@
     
 # Apache Configure
 - name: Copy VirtualHosts file with owner and permissions
-  copy:
+  template:
     src:  canvas.conf
     dest: /etc/httpd/conf.d/vhost.conf
 
