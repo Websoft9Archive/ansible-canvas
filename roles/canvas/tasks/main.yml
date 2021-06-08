@@ -107,7 +107,14 @@
     setfacl -m u:www-data:rx -R /data/wwwroot/canvas
   args:
     chdir: /data/wwwroot/canvas
-    
+
+- name: Improve canvas bug
+  lineinfile:
+    dest: //data/wwwroot/canvas/db/migrate/*_create_auditors_partitions.rb
+    regexp: 'partman.create_partition(current_partition_time)'
+    firstmatch: yes
+    line: "        partman.create_partition(current_partition_time, graceful: true)"
+
 - name: postgresql initialization & Set login_email, login_password,user
   shell: |
     RAILS_ENV=production bundle exec rake db:initial_setup
