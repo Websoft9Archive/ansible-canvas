@@ -119,6 +119,16 @@
     chdir: /data/wwwroot/canvas
     
 # Apache Configure
+- name: Get PassengerRuby directory
+  find: 
+    paths: /usr/local/rvm/gems
+    file_type: directory
+    recurse: no
+    contains: "{{ruby_version}}"
+  register: passenger_ruby_dir
+
+- debug: var=passenger_ruby_dir.stdout
+
 - name: Copy VirtualHosts file with owner and permissions
   template:
     src:  canvas.conf
