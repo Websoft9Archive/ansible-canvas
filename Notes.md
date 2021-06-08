@@ -19,7 +19,7 @@ Canvas 是一个开源LMS系统。
 * 数据库：postgresql
 * 依赖组件：
 * 服务器配置：最低2核8G
-* 其他：
+* 其他：passenger 基于ruby开发的，所以安装时会自动安装ruby，ruby命令全局可用。故,在组合项目中，role_passenger 必须在 role_ruby 之前安装，以保证 role_ruby 安装结果不会被破坏
 
 ## 安装说明
 
@@ -31,12 +31,6 @@ Canvas 的安装难点集中在如下几个方面：
 * production and development 版本安装方式不同，前者更为复杂
 * 后台的密码随机化只能通过初始化去实现
 
-## 路径
-
-* 程序路径：*/data/wwwroot/canvas*
-* 日志路径： */data/wwwroot/canvas/logs*
-* 配置文件路径：  
-* 其他...
 
 ## 账号密码
 
