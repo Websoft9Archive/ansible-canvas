@@ -109,7 +109,8 @@
     chdir: /data/wwwroot/canvas
 
 - name: Improve canvas bug
-  shell: sed -i "s/partman.create_partition(current_partition_time)/partman.create_partition(current_partition_time, graceful: true)/g"  /data/wwwroot/canvas/db/migrate/*_create_auditors_partitions.rb
+  shell: >
+    sed -i "s/partman.create_partition(current_partition_time)/partman.create_partition(current_partition_time, graceful: true)/g"  /data/wwwroot/canvas/db/migrate/*_create_auditors_partitions.rb
 
 - name: postgresql initialization & Set login_email, login_password,user
   shell: |
