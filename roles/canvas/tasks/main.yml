@@ -120,11 +120,7 @@
     
 # Apache Configure
 - name: Get PassengerRuby directory
-  find: 
-    paths: /usr/local/rvm/gems
-    file_type: directory
-    recurse: no
-    contains: "{{ruby_version}}"
+  shell: find /usr/local/rvm/gems/  -name "*{{ruby_version}}*" -type d
   register: passenger_ruby_dir
 
 - debug: var=passenger_ruby_dir.stdout
