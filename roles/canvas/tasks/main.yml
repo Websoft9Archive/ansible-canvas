@@ -38,7 +38,7 @@
   
 - name: Install bundle and ruby packages
   shell: |
-    bundle install --without pulsar --path vendor/bundle 
+    bash -lc "bundle install --without pulsar --path vendor/bundle"
   args:
     chdir: /data/wwwroot/canvas
     
@@ -64,7 +64,7 @@
     
 - name: Create canvas assets 
   shell: |
-    RAILS_ENV=production bundle exec rake canvas:compile_assets
+    bash -lc "RAILS_ENV=production bundle exec rake canvas:compile_assets"
     chown -R canvas public/dist/brandable_css 
   args:
     chdir: /data/wwwroot/canvas
@@ -114,7 +114,7 @@
 
 - name: postgresql initialization & Set login_email, login_password,user
   shell: |
-    RAILS_ENV=production bundle exec rake db:initial_setup
+    bash -lc "RAILS_ENV=production bundle exec rake db:initial_setup"
   args:
     chdir: /data/wwwroot/canvas
     
