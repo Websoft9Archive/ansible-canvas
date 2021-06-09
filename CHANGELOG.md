@@ -1,17 +1,7 @@
 # CHANGELOG
 
-## To do
+## Release v2021-05-26.23  2021-06-09
+### Fixes and Enhancements
+- update to v2021-05-26.13  #1
 
-1. Apache 用户 www-data 通用化处理
-2. CentOS 支持
 
-## Logs
-
-### Bug Fixes
-
-* 2020-02-14  canvas-version版本输出
-* 2020-02-13  canvas-version版本输出
-
-### Features
-
-* 2020-07-02  Modulate version created
