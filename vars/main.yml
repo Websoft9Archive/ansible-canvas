@@ -49,4 +49,4 @@ init_application:
     config_paths:
       - /data/wwwroot/canvas/config/local_env.yml
     commands:
-      - cd /data/wwwroot/canvas;RAILS_ENV=production bundle exec rake db:initial_setup
+      - cd /data/wwwroot/canvas;bash -lc "RAILS_ENV=production bundle exec rake db:initial_setup"
