@@ -8,6 +8,27 @@
 
 支持包括中文、英文等二十多种语言
 
+#### Canvas 怎么安装插件？
+
+通过BigBlueButton为例，步骤如下：
+
+1. 登陆 Canvas 站点
+
+2. 通过URL：*http://域名/plugins* 或 *http://服务器公网IP/plugins*, 进入插件选择页面
+   ![canvas 插件](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-plugin01-websoft9.png)
+
+3. 选择您要安装的插件，点击安装
+
+4. 在插件安装页面，去掉勾选【禁用此插件】，输入相关引导信息，点击【申请】
+   ![canvas 插件设置](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-plugin02-websoft9.png)
+   ![canvas 插件设置](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-plugin03-websoft9.png)
+
+5.  安装插件前后，页面已经发生变化（课程中追加了BigBlueButton对应的会议功能）
+   ![canvas 插件安装前后对比](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-plugin04-websoft9.png)
+   ![canvas 插件安装前后对比](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-plugin05-websoft9.png)
+
+支持包括中文、英文等二十多种语言
+
 #### 是否可以通过命令行修改或重置 Canvas 管理员密码？
 
 Canvas 官方没有提供。
