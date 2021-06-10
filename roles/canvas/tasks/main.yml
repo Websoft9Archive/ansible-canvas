@@ -61,6 +61,7 @@
     yarn install
   args:
     chdir: /data/wwwroot/canvas
+  failed_when: False
     
 - name: Create canvas assets 
   shell: |
