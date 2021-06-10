@@ -23,7 +23,7 @@
    ![canvas 插件设置](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-plugin02-websoft9.png)
    ![canvas 插件设置](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-plugin03-websoft9.png)
 
-5.  安装插件前后，页面已经发生变化（课程中追加了BigBlueButton对应的会议功能）
+5. 安装插件前后，页面已经发生变化（课程中追加了BigBlueButton对应的会议功能）
    ![canvas 插件安装前后对比](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-plugin04-websoft9.png)
    ![canvas 插件安装前后对比](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-plugin05-websoft9.png)
 
