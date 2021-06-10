@@ -27,8 +27,6 @@
    ![canvas 插件安装前后对比](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-plugin04-websoft9.png)
    ![canvas 插件安装前后对比](https://libs.websoft9.com/Websoft9/DocsPicture/zh/canvas/canvas-plugin05-websoft9.png)
 
-支持包括中文、英文等二十多种语言
-
 #### 是否可以通过命令行修改或重置 Canvas 管理员密码？
 
 Canvas 官方没有提供。
