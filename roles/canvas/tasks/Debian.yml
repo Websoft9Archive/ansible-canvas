@@ -1,11 +1,11 @@
 # external Dependencies Installation
 - name: Install external dependency
   apt: 
-    name: [zlib1g-dev,libxml2-dev,libsqlite3-dev,libpq-dev,libxmlsec1-dev]
+    name: [zlib1g-dev,libxml2-dev,libsqlite3-dev,libpq-dev,aptitude]
     update_cache: yes
       
-      
-
+- name: Use aptitude to resolve dependencies on libxmlsec1-dev installation
+  shell: echo -e "n\ny\n" |aptitude  install libxmlsec1-dev 
 
 
 
