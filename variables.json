@@ -11,8 +11,8 @@
   "requirements_configure_url": "https://github.com/instructure/canvas-lms/wiki/Production-Start#prerequisites",
   "components": " Canvas, Ruby, Node.js, Apache, Passenger, PostgreSQL, pgadmin on Docker ",
   "install_way": {
-    "en": "Isntallation for download binaries files ",
+    "en": "Isntallation for download binaries files",
     "zh": "下载可执行二进制包解压安装"
   },
-  "install_url": "https://github.com/canvas/canvas/releases"
+  "install_url": "https://github.com/instructure/canvas-lms/tags"
 }
