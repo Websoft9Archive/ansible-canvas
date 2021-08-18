@@ -1,0 +1,18 @@
+{
+  "name": "canvas",
+  "trademark": "Canvas",
+  "official_url": "https://www.instructure.com/",
+  "support_os": "Ubuntu20.04",
+  "requirements_cpu": "2",
+  "requirements_memory": "8",
+  "requirements_Bandwidth": "100",
+  "requirements_disk": "20",
+  "requirements_swap": "2",
+  "requirements_configure_url": "https://github.com/instructure/canvas-lms/wiki/Production-Start#prerequisites",
+  "components": " Canvas, Ruby, Node.js, Apache, Passenger, PostgreSQL, pgadmin on Docker ",
+  "install_way": {
+    "en": "Isntallation for download binaries files ",
+    "zh": "下载可执行二进制包解压安装"
+  },
+  "install_url": "https://github.com/canvas/canvas/releases"
+}
