@@ -7,14 +7,14 @@ apache_appname: "canvas"
 apache_vhost_mode: "www"
 
 nodejs_version: "14"
-ruby_version: "2.6"
-ruby_bundle_version: "2.2.17"
+ruby_version: "2.7"
+ruby_bundle_version: "2.3.0"
 
 redis_version: "5.0"
 
 passenger_integration: apache
 
-postgresql_version: "9.5"
+postgresql_version: "12"
 postgresql_password: "123456"
 
 docker_applications: 
