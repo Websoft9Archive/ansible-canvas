@@ -1,4 +1,4 @@
-canvas_download_url: "http://github.com/instructure/canvas-lms/zipball/stable"
+canvas_download_url: "https://github.com/instructure/canvas-lms/archive/prod.zip"
 canvas_postgresql_password: "123456"
 
 # canvas administrator_login: login_email, login_password, user 
